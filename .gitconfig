@@ -66,3 +66,6 @@
 	usehttppath = true
 [include]
     path = ~/.gitconfig.user
+[include]
+    path = ~/.gitconfig.credential
+
