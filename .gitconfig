@@ -1,0 +1,68 @@
+[alias]
+	alias = !git config -l | grep alias
+	undo = reset --soft HEAD^
+	s = status -s
+	co = checkout
+	publish = push -u origin HEAD
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	b = !git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'
+	bhistory = log --graph --abbrev-commit --decorate  --first-parent --oneline
+	gone = !git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}'
+	gone-delete = !git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
+	start-over = "!git reset --hard origin/$(git symbolic-ref --short HEAD); git clean -fd"
+	please = push --force-with-lease
+	uncommit = reset --soft HEAD~1
+[color]
+	ui = true
+[core]
+	editor = \"C:\\Users\\ivara\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
+	autocrlf = true
+	pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+	true-color = always
+	navigate = true    # use n and N to move between diff sections
+	light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+	side-by-side = true
+	line-numbers = true
+	diff-so-fancy = true
+	hyperlinks = true
+	hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+[diff]
+	colorMoved = default
+	#tool = vscode
+	guitool = vscode
+[difftool "vscode"]
+	cmd = \"code\" --new-window --wait --diff \"$LOCAL\" \"$REMOTE\"
+	path = code
+[merge]
+	tool = vscode
+	conflictstyle = diff3
+	guitool = vscode
+[mergetool "vscode"]
+	cmd = \"code\" --new-window --wait --merge \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\"
+	path = code
+[fetch]
+	prune = true
+[format]
+	pretty = format:%C(4)%h %C(yellow)%>(12)%ad %Cgreen%<(7)%aN %x09 %Creset%s
+[log]
+	date = relative
+[pull]
+	rebase = true
+[push]
+	followTags = true
+[rebase]
+	autoStash = false
+	autosquash = false
+	updateRefs = false
+[init]
+	defaultBranch = main
+[credential]
+	helper = 
+	helper = manager
+[credential "https://dev.azure.com"]
+	usehttppath = true
+[include]
+    path = ~/.gitconfig.user
