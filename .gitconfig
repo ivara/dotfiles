@@ -16,10 +16,10 @@
 	ui = true
 [core]
 	editor = \"C:\\Users\\ivara\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
-	autocrlf = true
+	#autocrlf = true  # set this in ~/.gitconfig.local instead since it differs from windows/linux
 	pager = delta
 [interactive]
-    diffFilter = delta --color-only
+        diffFilter = delta --color-only
 [delta]
 	true-color = always
 	navigate = true    # use n and N to move between diff sections
@@ -59,13 +59,8 @@
 	updateRefs = false
 [init]
 	defaultBranch = main
-[credential]
-	helper = 
-	helper = manager
 [credential "https://dev.azure.com"]
 	usehttppath = true
 [include]
-    path = ~/.gitconfig.user
-[include]
-    path = ~/.gitconfig.credential
+        path = ~/.gitconfig.local
 
