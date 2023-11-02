@@ -117,13 +117,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ls="exa --icons --sort=type"
-alias la="exa --icons --sort=type -a"
-alias ll="exa --icons --sort=type -l"
-alias lt="exa --icons --sort=type --tree --level=2"
-alias ltt="exa --icons --sort=type --tree --level=3"
-alias lttt="exa --icons --sort=type --tree --level=4"
-alias ltttt="exa --icons --sort=type --tree --level=5"
+alias ls="exa --icons"
+alias la="exa --icons -a"
+alias ll="exa --icons -l"
+alias lt="exa --icons --tree --level=2"
+alias ltt="exa --icons ----tree --level=3"
+alias lttt="exa --icons ---tree --level=4"
+alias ltttt="exa --icons --tree --level=5"
 # load zsh-completions
 autoload -U compinit && compinit
 #neofetch
