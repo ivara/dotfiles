@@ -166,7 +166,7 @@ cd() {
 
 # optional, greet also when opening shell directly in repository directory
 # adds time to startup
-check_directory_for_new_repository
+#check_directory_for_new_repository
 
 
 export FZF_DEFAULT
@@ -177,3 +177,4 @@ export FZF_DEFAULT
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
