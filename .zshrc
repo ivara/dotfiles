@@ -121,8 +121,8 @@ alias ls="exa --icons"
 alias la="exa --icons -a"
 alias ll="exa --icons -l"
 alias lt="exa --icons --tree --level=2"
-alias ltt="exa --icons ----tree --level=3"
-alias lttt="exa --icons ---tree --level=4"
+alias ltt="exa --icons --tree --level=3"
+alias lttt="exa --icons --tree --level=4"
 alias ltttt="exa --icons --tree --level=5"
 # load zsh-completions
 autoload -U compinit && compinit
