@@ -1,3 +1,3 @@
 require("ivar.core.keymaps")
-require("ivar.core.lazy")
 require("ivar.core.options")
+require("ivar.core.lazy")
