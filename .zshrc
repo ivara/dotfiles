@@ -1,3 +1,4 @@
+alias vi="nvim"
 ## set colors for LS_COLORS
 #eval `dircolors ~/.dircolors`
 
@@ -172,4 +173,4 @@ export FZF_DEFAULT
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
+eval "$(zoxide init zsh)"
