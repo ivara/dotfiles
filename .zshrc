@@ -1,4 +1,10 @@
-alias vi="nvim"
+#alias vi="nvim"
+alias nvim-lazy="NVIM_APPNAME=nvim-lazyvim nvim" # LazyVim
+alias nvim-nvchad='NVIM_APPNAME=nvim-nvchad nvim' # NvChad
+alias nvim-kickstart='NVIM_APPNAME=nvim-kickstart nvim' # Kickstart
+alias nvim-astro='NVIM_APPNAME=nvim-astrovim nvim' # AstroVim
+alias nvim-lunar='NVIM_APPNAME=nvim-lunarvim nvim' # nvim-lunarvim
+
 ## set colors for LS_COLORS
 #eval `dircolors ~/.dircolors`
 
