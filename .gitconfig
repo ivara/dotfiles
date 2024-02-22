@@ -6,7 +6,8 @@
 	publish = push -u origin HEAD
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	b = !git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'
-	bhistory = log --graph --abbrev-commit --decorate  --first-parent --oneline
+	bhistory = log --graph --oneline --decorate --all --abbrev-commit --first-parent
+	overview = log --graph --oneline --decorate --all
 	gone = !git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}'
 	gone-delete = !git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
 	start-over = "!git reset --hard origin/$(git symbolic-ref --short HEAD); git clean -fd"
@@ -20,7 +21,7 @@
 	# from OS to OS
 	pager = delta
 [interactive]
-        diffFilter = delta --color-only
+	diffFilter = delta --color-only
 [delta]
 	true-color = always
 	navigate = true    # use n and N to move between diff sections
@@ -60,14 +61,9 @@
 	updateRefs = false
 [init]
 	defaultBranch = main
-#[credential "https://dev.azure.com"]
-#	usehttppath = true
 [include]
-        path = ~/.gitconfig.local
-
-#[credential "https://github.com"]
-#	helper = 
-#	helper = !/usr/bin/gh auth git-credential
-#[credential "https://gist.github.com"]
-#	helper = 
-#	helper = !/usr/bin/gh auth git-credential
+  path = ~/.gitconfig.local
+[rerere]
+	enabled = true
+[maintenance]
+	repo = D:/git/lernia/Lernia.Se.Mono
