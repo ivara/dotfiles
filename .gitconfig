@@ -55,6 +55,7 @@
 	rebase = true
 [push]
 	followTags = true
+	default = current
 [rebase]
 	autoStash = false
 	autosquash = false
