@@ -1,12 +1,12 @@
 [alias]
 	cb = !git branch --all | grep -v '^[*+]' | awk '{print $1}' | fzf -0 --preview 'git show --color=always {-1}' | sed 's/remotes\\/origin\\///g' | xargs -r git checkout
-  
   alias = !git config -l | grep alias
+	cb = !git branch --all | grep -v '^[*+]' | awk '{print $1}' | fzf -0 --preview 'git show --color=always {-1}' | sed 's/remotes\\/origin\\///g' | xargs -r git checkout
 	undo = reset --soft HEAD^
-	s = status -s
+	s = status
 	co = checkout
-	publish = push -u origin HEAD
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lg = log --graph --all --decorate --oneline
+	lgg = log --graph --decorate --pretty=format:'%C(yellow)%h%C(reset) -%C(red)%d%C(reset) %s %C(green)(%cr) %C(bold blue)<%an>%C(reset)'
 	b = !git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'
 	bhistory = log --graph --oneline --decorate --all --abbrev-commit --first-parent
 	overview = log --graph --oneline --decorate --all
@@ -15,12 +15,19 @@
 	start-over = "!git reset --hard origin/$(git symbolic-ref --short HEAD); git clean -fd"
 	please = push --force-with-lease
 	uncommit = reset --soft HEAD~1
+
+
+	lg = lg1
+    lg1 = lg1-specific --all
+    lg2 = lg2-specific --all
+    lg3 = lg3-specific --all
+
+    lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold yellow)%h%C(reset) - %C(white)%s%C(reset) %C(bold green)(%ar)%C(reset) %C(dim white)%an%C(reset)%C(auto)%d%C(reset) '
+    lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+    lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
 [color]
 	ui = true
 [core]
-	# set both "editor" and "autocrlf"
-	# in ~/.gitconfig.local since it differs
-	# from OS to OS
 	pager = delta
 [interactive]
 	diffFilter = delta --color-only
@@ -35,7 +42,6 @@
 	hyperlinks-file-link-format = "vscode://file/{path}:{line}"
 [diff]
 	colorMoved = default
-	#tool = vscode
 	guitool = vscode
 [difftool "vscode"]
 	cmd = \"code\" --new-window --wait --diff \"$LOCAL\" \"$REMOTE\"
@@ -49,10 +55,6 @@
 	path = code
 [fetch]
 	prune = true
-[format]
-	pretty = format:%C(4)%h %C(yellow)%>(12)%ad %Cgreen%<(7)%aN %x09 %Creset%s
-[log]
-	date = relative
 [pull]
 	rebase = true
 [push]
@@ -65,7 +67,7 @@
 [init]
 	defaultBranch = main
 [include]
-  path = ~/.gitconfig.local
+	path = ~/.gitconfig.local
 [rerere]
 	enabled = true
 [maintenance]
