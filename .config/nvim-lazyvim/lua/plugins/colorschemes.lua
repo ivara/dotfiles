@@ -7,7 +7,7 @@ return {
     priority = 1000,
     opts = {},
   },
-
+  { "shaunsingh/nord.nvim" },
   -- the colorscheme for LazyVim to use as default
   {
     "LazyVim/LazyVim",
