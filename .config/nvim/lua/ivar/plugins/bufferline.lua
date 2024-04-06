@@ -1,4 +1,7 @@
+if true then return {} end
+
 return {
+
 	"akinsho/bufferline.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
@@ -17,7 +20,7 @@ return {
 				diagnostics = "nvim_lsp",
 				separator_style = { "", "" },
 				modified_icon = "●",
-				show_close_icon = false,
+				show_close_icon = true,
 				show_buffer_close_icons = false,
 			},
 			-- highlights = {

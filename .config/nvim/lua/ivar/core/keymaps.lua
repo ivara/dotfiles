@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 local map = vim.api.nvim_set_keymap
+
 -- Toggle between tabs
 map("n", "<C-h>", "<C-w>h", { noremap = true, silent = false })
 map("n", "<C-j>", "<C-w>j", { noremap = true, silent = false })
@@ -20,8 +21,7 @@ map("n", "<C-s>", '"+P', { noremap = true, silent = false })
 
 -- Remapping Escape key
 map("i", "jk", "<Esc>", { noremap = true, silent = false })
--- map("n", "kj", "<Esc>", { noremap = true, silent = false })
--- map("v", "kj", "<Esc>", { noremap = true, silent = false })
 
 -- Unhighlight searched elements
 map("n", "<C-u>", ":nohlsearch<cr>", { noremap = true, silent = true })
+
