@@ -71,11 +71,3 @@
   enabled = true
 [maintenance]
   repo = D:/git/lernia/Lernia.Se.Mono
-[filter "lfs"]
-  process = git-lfs filter-process
-  required = true
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-[user]
-  name = Ivar Åsell
-  email = ivar.asell@activesolution.se
