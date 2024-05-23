@@ -1,7 +1,6 @@
 [alias]
 	cb = !git branch --all | grep -v '^[*+]' | awk '{print $1}' | fzf -0 --preview 'git show --color=always {-1}' | sed 's/remotes\\/origin\\///g' | xargs -r git checkout
 	alias = !git config -l | grep alias
-	cb = !git branch --all | grep -v '^[*+]' | awk '{print $1}' | fzf -0 --preview 'git show --color=always {-1}' | sed 's/remotes\\/origin\\///g' | xargs -r git checkout
 	up = fetch --all --prune
 	undo = reset --soft HEAD^
 	s = status
@@ -15,59 +14,56 @@
 	start-over = "!git reset --hard origin/$(git symbolic-ref --short HEAD); git clean -fd"
 	please = push --force-with-lease
 	uncommit = reset --soft HEAD~1
-
-  crap = ls-files -c -i --exclude-standard
+	crap = ls-files -c -i --exclude-standard
 	fixup = !git log -n 50 --pretty=format:\"%h %s\" --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup
-	#lg = lg1
-  #lg1 = lg1-specific --all
-  #lg2 = lg2-specific --all
-  #lg3 = lg3-specific --all
-
-  #lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold yellow)%h%C(reset) - %C(white)%s%C(reset) %C(bold green)(%ar)%C(reset) %C(dim white)%an%C(reset)%C(auto)%d%C(reset) '
-  #lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
-  #lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
-[core]
-  pager = delta
-[interactive]
-  diffFilter = delta --color-only
-[delta]
-  true-color = always
-  navigate = true
-  light = false
-  side-by-side = true
-  line-numbers = true
-  diff-so-fancy = true
-  hyperlinks = true
-  hyperlinks-file-link-format = vscode://file/{path}:{line}
+	last = log -1 HEAD --stat
+# [core]
+# 	pager = delta
+# 	editor = vi
+# [interactive]
+# 	diffFilter = delta --color-only
+# [delta]
+# 	true-color = always
+# 	navigate = true
+# 	light = false
+# 	side-by-side = true
+# 	line-numbers = true
+# 	diff-so-fancy = true
+# 	hyperlinks = true
+# 	hyperlinks-file-link-format = vscode://file/{path}:{line}
 [diff]
-  colorMoved = default
-  guitool = vscode
+	colorMoved = default
+	guitool = vscode
 [difftool "vscode"]
-  cmd = \"code\" --new-window --wait --diff \"$LOCAL\" \"$REMOTE\"
-  path = code
+	cmd = \"C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe\" --new-window --wait --diff \"$LOCAL\" \"$REMOTE\"
+	path = C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe
 [merge]
-  tool = vscode
-  conflictstyle = diff3
-  guitool = vscode
+	tool = vscode
+	conflictstyle = diff3
+	guitool = vscode
 [mergetool "vscode"]
-  cmd = \"code\" --new-window --wait --merge \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\"
-  path = code
+	cmd = \"C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe\" --new-window --wait --merge \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\"
+	path = C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe
 [fetch]
-  prune = true
+	prune = true
 [pull]
-  rebase = true
+	rebase = true
 [push]
-  followTags = true
-  default = current
+	followTags = true
+	default = current
 [rebase]
-  autoStash = false
-  autosquash = false
-  updateRefs = false
+	autoStash = false
+	autosquash = true
+	updateRefs = true
 [init]
-  defaultBranch = main
+	defaultBranch = main
 [include]
-  path = ~/.gitconfig.local
+	path = ~/.gitconfig.local
 [rerere]
-  enabled = true
+	enabled = true
 [maintenance]
-  repo = D:/git/lernia/Lernia.Se.Mono
+	repo = D:/git/lernia/Lernia.Se.Mono
+	repo = D:/git/microsoft-authentication-library-for-js
+[mergetool "winmerge"]
+	path = C:/Program Files (x86)/WinMerge/winmergeu.exe
+	cmd = \"C:/Program Files (x86)/WinMerge/winmergeu.exe\" -e -u  -wl -wr -fm -dl \"Mine: $LOCAL\" -dm \"Merged: $BASE\" -dr \"Theirs: $REMOTE\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" -o \"$MERGED\"
