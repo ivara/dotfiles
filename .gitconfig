@@ -17,20 +17,6 @@
 	crap = ls-files -c -i --exclude-standard
 	fixup = !git log -n 50 --pretty=format:\"%h %s\" --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup
 	last = log -1 HEAD --stat
-# [core]
-# 	pager = delta
-# 	editor = vi
-# [interactive]
-# 	diffFilter = delta --color-only
-# [delta]
-# 	true-color = always
-# 	navigate = true
-# 	light = false
-# 	side-by-side = true
-# 	line-numbers = true
-# 	diff-so-fancy = true
-# 	hyperlinks = true
-# 	hyperlinks-file-link-format = vscode://file/{path}:{line}
 [diff]
 	colorMoved = default
 	guitool = vscode
@@ -48,9 +34,6 @@
 	prune = true
 [pull]
 	rebase = true
-[push]
-	followTags = true
-	default = current
 [rebase]
 	autoStash = false
 	autosquash = true

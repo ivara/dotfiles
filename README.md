@@ -1,12 +1,10 @@
 # 📑 Dotfiles
 
-
 ## Windows
 
 Use [Scoop](https://scoop.sh/) to install software smoothly on windows.
 
-
-```pwsh 
+```pwsh
 scoop bucket add extras
 scoop bucket add nerd-fonts
 
@@ -18,17 +16,15 @@ scoop install main/fzf
 scoop install extras/psfzf
 scoop install extras/lazygit
 scoop install main/neovim
-````
-
-
+```
 
 This is how to add symbolic links on windows
 
 1. Open cmd.exe as Administrator
-2. `mklink c:\Users\ivara\.vimrc d:\git\dotfiles\.vimrc`
-3. `mklink c:\Users\ivara\.gitconfig d:\git\dotfiles\.gitconfig`
-4. `mklink c:\Users\ivara\.bashrc d:\git\dotfiles\.bashrc`
-5. `mklink c:\Users\ivara\.config\powershell\user_profile.ps1 d:\git\dotfiles\.config\powershell\user_profile.ps1`
+2. `mklink c:\Users\ivara\.vimrc e:\git\dotfiles\.vimrc`
+3. `mklink c:\Users\ivara\.gitconfig e:\git\dotfiles\.gitconfig`
+4. `mklink c:\Users\ivara\.bashrc e:\git\dotfiles\.bashrc`
+5. `mklink c:\Users\ivara\.config\powershell\user_profile.ps1 e:\git\dotfiles\.config\powershell\user_profile.ps1`
 
 Or using i.e. Git bash
 
@@ -55,7 +51,7 @@ Create your symlinks using `ln`
 winget install dandavison.delta
 ```
 
-For git user you need to create a `~/.gitconfig.user` with 
+For git user you need to create a `~/.gitconfig.user` with
 
 ```git
 [user]
@@ -64,4 +60,3 @@ For git user you need to create a `~/.gitconfig.user` with
 ```
 
 To test if you've got it working you can open a terminal and write `git config user.email` and see if it uses it correctly
-
