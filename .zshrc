@@ -193,3 +193,13 @@ fi
 
 # Zoxide
 eval "$(zoxide init zsh)"
+
+# fnm
+FNM_PATH="/home/ivar/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/ivar/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+## fnm automatically use/switch node version of CD
+eval "$(fnm env --use-on-cd)"
