@@ -184,10 +184,9 @@ cd() {
 
 export FZF_DEFAULT
 
-# bun completions
-[ -s "/home/ivar/.bun/_bun" ] && source "/home/ivar/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-eval "$(zoxide init zsh)"
+# fnm
+FNM_PATH="/home/ivara/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/ivara/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
