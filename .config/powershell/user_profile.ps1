@@ -29,7 +29,9 @@ Set-Alias less 'C:\Program Files\Git\usr\bin\less.exe'
 # Utilities
 function which ($command) {
   Get-Command -Name $command -ErrorAction SilentlyContinue |
-    Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
+  Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
 
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
+
+fnm env --use-on-cd | Out-String | Invoke-Expression
