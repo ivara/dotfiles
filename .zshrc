@@ -190,3 +190,6 @@ if [ -d "$FNM_PATH" ]; then
   export PATH="/home/ivara/.local/share/fnm:$PATH"
   eval "`fnm env`"
 fi
+
+# Zoxide
+eval "$(zoxide init zsh)"
