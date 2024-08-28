@@ -1,6 +1,7 @@
 # Prompt
 #oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/powerlevel10k_rainbow.omp.json" | Invoke-Expression
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/emodipt-extend.omp.json" | Invoke-Expression
+# stop using oh-my-posh and use starship instead
+# oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/emodipt-extend.omp.json" | Invoke-Expression
 
 # PSReadLine
 Set-PSReadLineOption -EditMode vi
@@ -35,3 +36,5 @@ function which ($command) {
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
 fnm env --use-on-cd | Out-String | Invoke-Expression
+
+Invoke-Expression (&starship init powershell)
