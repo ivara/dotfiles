@@ -13,17 +13,22 @@ source ~/.vimrc
 set clipboard+=unnamed
 set clipboard+=ideaput
 
+" Controls selection behaviour with special keys.
+" List of comma separated words, which enable special things that keys can do.
+set keymodel=startsel,stopsel,stopselect ",select,continueselect,continuevisual
+
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
 set scrolloff=5
 
+
 " Do incremental searching.
 set incsearch
 
 " Don't use Ex mode, use Q for formatting.
-map Q gq
-map <C-c> <Esc>
+"map Q gq
+"map <C-c> <Esc>
 "map <C-H> <C-W>h
 
 " --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
@@ -33,6 +38,18 @@ Plug 'machakann/vim-highlightedyank'
 " Commentary plugin
 Plug 'tpope/vim-commentary'
 
+" configure WhichKey
+" https://plugins.jetbrains.com/plugin/15976-which-key
+set which-key
+set notimeout " set timeoutlen=5000
+let g:WhichKey_ShowVimActions = "true"
+let g:WhichKeyDesc_goto_top = "gg goto first line"
+let g:WhichKey_ShowTypedSequence = "true"
+let g:WhichKey_SortCaseSensitive = "false"
+let g:WhichKey_FontSize=14
+let g:WhichKey_Divider=" "
+let g:WhichKey_CommandStyle=""
+let g:WhichKey_CommandColor="default"
 map <leader>o <Action>(FileStructurePopup)
 inoremap jk <Esc>
 
@@ -41,6 +58,7 @@ nmap gr <action>(FindUsages)
 
 nmap <leader>bd <action>(CloseEditor)
 nmap <leader>z <action>(ToggleDistractionFreeMode)
+noremap <leader><leader> :action Switcher<CR>
 " toggle line numbers
 nmap <leader>ul <action>(EditorToggleShowLineNumbers)
 nmap <leader>uL :set relativenumber!<CR>
