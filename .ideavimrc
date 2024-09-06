@@ -5,7 +5,7 @@
 "   the same commands as the original .vimrc configuration.
 " You can find a list of commands here: https://jb.gg/h38q75
 " Find more examples here: https://jb.gg/share-ideavimrc
-let mapleader=" "
+"let mapleader=" "
 
 " Source your .vimrc
 source ~/.vimrc
@@ -33,6 +33,7 @@ set incsearch
 "map Q gq
 "map <C-c> <Esc>
 "map <C-H> <C-W>h
+"inoremap jk <Esc>
 
 " --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
 
@@ -54,11 +55,11 @@ let g:WhichKey_Divider=" "
 let g:WhichKey_CommandStyle=""
 let g:WhichKey_CommandColor="default"
 map <leader>o <Action>(FileStructurePopup)
-inoremap jk <Esc>
 
 nmap gI <action>(ReSharperGotoImplementation)
 nmap gr <action>(FindUsages)
 
+" Navigating tabs
 nmap <s-l> <Action>(NextTab)
 nmap <s-h> <Action>(PreviousTab)
 
@@ -75,6 +76,9 @@ nmap <leader>uL :set relativenumber!<CR>
 " remove highlight search when pressing esc
 noremap <ESC> <ESC>:noh<CR>
 noremap <leader>| :action SplitVertically<CR>
+noremap <C-w>h :action SplitHorizontally<CR>
+noremap <C-w>v :action SplitVertically<CR>
+noremap <C-w>q :action CloseContent<CR>
 noremap <leader>- :action SplitHorizontally<CR>
 nnoremap <Leader>q :action CloseContent<CR>
 "noremap za :action CollapseExpandFoldRegion<CR>
