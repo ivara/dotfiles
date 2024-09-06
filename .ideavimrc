@@ -46,11 +46,11 @@ Plug 'tpope/vim-commentary'
 " https://plugins.jetbrains.com/plugin/15976-which-key
 set which-key
 set notimeout " set timeoutlen=5000
-let g:WhichKey_ShowVimActions = "true"
+let g:WhichKey_ShowVimActions = "false"
 let g:WhichKeyDesc_goto_top = "gg goto first line"
-let g:WhichKey_ShowTypedSequence = "true"
+let g:WhichKey_ShowTypedSequence = "false"
 let g:WhichKey_SortCaseSensitive = "false"
-let g:WhichKey_FontSize=14
+let g:WhichKey_FontSize=12
 let g:WhichKey_Divider=" "
 let g:WhichKey_CommandStyle=""
 let g:WhichKey_CommandColor="default"
@@ -75,12 +75,12 @@ nmap <leader>uL :set relativenumber!<CR>
 
 " remove highlight search when pressing esc
 noremap <ESC> <ESC>:noh<CR>
-noremap <leader>| :action SplitVertically<CR>
-noremap <C-w>h :action SplitHorizontally<CR>
-noremap <C-w>v :action SplitVertically<CR>
+"noremap <leader>| :action SplitVertically<CR>
+"noremap <C-w>s :action SplitHorizontally<CR>
+"noremap <C-w>v :action SplitVertically<CR>
 noremap <C-w>q :action CloseContent<CR>
-noremap <leader>- :action SplitHorizontally<CR>
-nnoremap <Leader>q :action CloseContent<CR>
+"noremap <leader>- :action SplitHorizontally<CR>
+"nnoremap <Leader>q :action CloseContent<CR>
 "noremap za :action CollapseExpandFoldRegion<CR>
 
 map za <action>(ExpandCollapseToggleAction)
