@@ -13,6 +13,9 @@ source ~/.vimrc
 set clipboard+=unnamed
 set clipboard+=ideaput
 
+set NERDTree
+noremap <leader>e :NERDTreeToggle<CR>
+noremap <leader>x :action CloseContent<CR>
 " Controls selection behaviour with special keys.
 " List of comma separated words, which enable special things that keys can do.
 set keymodel=startsel,stopsel,stopselect ",select,continueselect,continuevisual
@@ -55,6 +58,9 @@ inoremap jk <Esc>
 
 nmap gI <action>(ReSharperGotoImplementation)
 nmap gr <action>(FindUsages)
+
+nmap <s-l> <Action>(NextTab)
+nmap <s-h> <Action>(PreviousTab)
 
 nmap <leader>bd <action>(CloseEditor)
 nmap <leader>z <action>(ToggleDistractionFreeMode)
