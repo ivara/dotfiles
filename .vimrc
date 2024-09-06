@@ -1,5 +1,5 @@
 set nocompatible
-set hidden 					"do not prompt to save when switching buffers
+set hidden                 "do not prompt to save when switching buffers
 set relativenumber number
 set hlsearch
 set incsearch
@@ -10,6 +10,9 @@ set laststatus=2
 set encoding=utf-8
 set visualbell
 set mouse=a
+
+" Share clipboard with system
+set clipboard=unnamedplus
 
 "set foldmethod=syntax
 filetype plugin indent on
@@ -42,6 +45,29 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 call plug#end()
 
+" Set space as the leader key
+let mapleader = " "
+
+" Map 'jk' to Escape in insert mode
+inoremap jk <Esc>
+
+nnoremap <leader>e :Explore<CR>nnoremap <leader>e :Explore<CR>
+
+" Map <leader>1 to switch to buffer 1
+nnoremap <leader>1 :buffer 1<CR>
+
+" Map <leader>2 to switch to buffer 2
+nnoremap <leader>2 :buffer 2<CR>
+
+" Map <leader>3 to switch to buffer 3
+nnoremap <leader>3 :buffer 3<CR>
+
+" Map <leader>4 to switch to buffer 4
+nnoremap <leader>4 :buffer 4<CR>
+
+" Map <leader>5 to switch to buffer 5
+nnoremap <leader>5 :buffer 5<CR>
+
 "set ts=4 sw=4
 "set ruler
 "set showmatch
@@ -49,4 +75,4 @@ call plug#end()
 "set cursorcolumn
 "packadd! dracula
 "colorscheme dracula
-
+	
