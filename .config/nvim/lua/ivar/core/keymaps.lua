@@ -2,14 +2,14 @@ vim.g.mapleader = " "
 local map = vim.api.nvim_set_keymap
 
 -- Toggle between tabs
-map("n", "<C-h>", "<C-w>h", { noremap = true, silent = false })
-map("n", "<C-j>", "<C-w>j", { noremap = true, silent = false })
-map("n", "<C-k>", "<C-w>k", { noremap = true, silent = false })
-map("n", "<C-l>", "<C-w>l", { noremap = true, silent = false })
+-- map("n", "<C-h>", "<C-w>h", { noremap = true, silent = false })
+-- map("n", "<C-j>", "<C-w>j", { noremap = true, silent = false })
+-- map("n", "<C-k>", "<C-w>k", { noremap = true, silent = false })
+-- map("n", "<C-l>", "<C-w>l", { noremap = true, silent = false })
 
 -- BufferLine
-map("n", "<Tab>", ":BufferLineCycleNext<cr>", { noremap = true, silent = true })
-map("n", "<S-Tab>", ":BufferLineCyclePrev<cr>", { noremap = true, silent = true })
+-- map("n", "<Tab>", ":BufferLineCycleNext<cr>", { noremap = true, silent = true })
+-- map("n", "<S-Tab>", ":BufferLineCyclePrev<cr>", { noremap = true, silent = true })
 
 -- Indenting
 map("v", "<", "<gv", { noremap = true, silent = false })
@@ -24,4 +24,3 @@ map("i", "jk", "<Esc>", { noremap = true, silent = false })
 
 -- Unhighlight searched elements
 map("n", "<C-u>", ":nohlsearch<cr>", { noremap = true, silent = true })
-

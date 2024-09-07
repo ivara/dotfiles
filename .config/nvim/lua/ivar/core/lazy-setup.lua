@@ -19,8 +19,8 @@ end
 lazy.setup(
   -- importing directories
   {
-    { import = "ivar.plugins" },
---    { import = "ivar.plugins.lsp" },
+    -- { import = "ivar.plugins" },
+    --    { import = "ivar.plugins.lsp" },
   },
   -- end of importing dirs
   {
