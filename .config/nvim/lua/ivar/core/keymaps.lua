@@ -23,4 +23,5 @@ map("n", "<C-s>", '"+P', { noremap = true, silent = false })
 map("i", "jk", "<Esc>", { noremap = true, silent = false })
 
 -- Unhighlight searched elements
-map("n", "<C-u>", ":nohlsearch<cr>", { noremap = true, silent = true })
+-- map("n", "<C-u>", ":nohlsearch<cr>", { noremap = true, silent = true })
+--
