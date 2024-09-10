@@ -16,8 +16,8 @@ map("v", "<", "<gv", { noremap = true, silent = false })
 map("v", ">", ">gv", { noremap = true, silent = false })
 
 -- Copy-Pasting
-map("v", "<C-c>", '"+y', { noremap = true, silent = false })
-map("n", "<C-s>", '"+P', { noremap = true, silent = false })
+-- map("v", "<C-c>", '"+y', { noremap = true, silent = false })
+-- map("n", "<C-s>", '"+P', { noremap = true, silent = false })
 
 -- Remapping Escape key
 map("i", "jk", "<Esc>", { noremap = true, silent = false })
