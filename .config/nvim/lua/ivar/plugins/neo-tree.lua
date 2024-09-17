@@ -1,18 +1,29 @@
 return {
     "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
+    branch = "*",
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+        "MunifTanjim/nui.nvim",
+        -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    },
+
+    keys = {
+        { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
     },
     opts = {
-         window = {
-      mappings = {
-        ["l"] = "open",
-        ["h"] = "close_node",
-        ["<space>"] = "none"
+        filesystem = {
+            window = {
+                mappings = {
+                    ['\\'] = 'close_window',
+                },
+            },
+        },
+        window = {
+            mappings = {
+                ["l"] = "open",
+                ["h"] = "close_node",
+                ["<space>"] = "none"
             }
         },
         default_component_configs = {
@@ -24,11 +35,11 @@ return {
             },
             git_status = {
                 symbols = {
-                 unstaged = "󰄱",
-                 staged = "󰱒",
-             },
-      },
-      },
+                    unstaged = "󰄱",
+                    staged = "󰱒",
+                },
+            },
+        },
     }
 }
 -- return {
