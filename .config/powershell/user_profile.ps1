@@ -11,11 +11,20 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -PredictionSource History
 
 # Fzf
+$startTime = Get-Date
 Import-Module PSFzf
 Set-PSFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
+$endTime = Get-Date
+$elapsedTime = $endTime - $startTime
+Write-Host "Import-Module PSFzf took $($elapsedTime.TotalSeconds) seconds"
 
 # Icons
+$startTime = Get-Date
 Import-Module -Name Terminal-Icons
+$endTime = Get-Date
+$elapsedTime = $endTime - $startTime
+Write-Host "Import-Module -Name Terminal-Icons took $($elapsedTime.TotalSeconds) seconds"
+
 
 # Alias
 Set-Alias vi nvim
@@ -33,8 +42,20 @@ function which ($command) {
   Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
 
+$startTime = Get-Date
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
+$endTime = Get-Date
+$elapsedTime = $endTime - $startTime
+Write-Host "Initializing Zoxide took $($elapsedTime.TotalSeconds) seconds"
 
+$startTime = Get-Date
 fnm env --use-on-cd | Out-String | Invoke-Expression
+$endTime = Get-Date
+$elapsedTime = $endTime - $startTime
+Write-Host "fnm env (fast node manager) took $($elapsedTime.TotalSeconds) seconds"
 
+$startTime = Get-Date
 Invoke-Expression (&starship init powershell)
+$endTime = Get-Date
+$elapsedTime = $endTime - $startTime
+Write-Host "Starship took $($elapsedTime.TotalSeconds) seconds"
