@@ -1,6 +1,9 @@
 {
   "extras": [
     "lazyvim.plugins.extras.coding.copilot",
+    "lazyvim.plugins.extras.coding.copilot-chat",
+    "lazyvim.plugins.extras.editor.illuminate",
+    "lazyvim.plugins.extras.editor.leap",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.git",
     "lazyvim.plugins.extras.lang.json",
@@ -10,6 +13,7 @@
     "lazyvim.plugins.extras.lang.sql",
     "lazyvim.plugins.extras.lang.svelte",
     "lazyvim.plugins.extras.lang.tailwind",
+    "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.lang.vue",
     "lazyvim.plugins.extras.lang.yaml",

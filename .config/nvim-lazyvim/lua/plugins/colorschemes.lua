@@ -1,18 +1,28 @@
 return {
-  { "rebelot/kanagawa.nvim", lazy = false },
+  {
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    opts = {
+      transparent = false,
+    },
+  },
   { "ellisonleao/gruvbox.nvim" },
   {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    opts = {},
+    opts = {
+      transparent = false,
+    },
   },
   { "shaunsingh/nord.nvim" },
   {
-    "catppuccin/nvim",
+    "caappuccin/nvim",
     lazy = false,
     name = "catppuccin",
     opts = {
+      flavor = "mocha",
+      transparent_background = false,
       integrations = {
         aerial = true,
         alpha = true,
@@ -55,7 +65,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "kanagawa",
+      colorscheme = "catppuccin",
     },
   },
 }
