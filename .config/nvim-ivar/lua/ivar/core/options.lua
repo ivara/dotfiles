@@ -1,7 +1,6 @@
 -- Define a custom highlight group for yank
 vim.cmd [[highlight YankHighlight cterm=reverse gui=reverse guibg=Yellow guifg=Black]]
 
-
 -- Function to highlight yanked text
 vim.api.nvim_exec([[
   augroup YankHighlight
