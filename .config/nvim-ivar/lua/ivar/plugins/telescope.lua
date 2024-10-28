@@ -2,19 +2,38 @@
 return {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.6",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-        require("telescope").setup()
+    dependencies = { 
+		"nvim-lua/plenary.nvim",
+		{ -- If encountering errors, see telescope-fzf-native README for installation instructions
+			'nvim-telescope/telescope-fzf-native.nvim',
 
-        -- set keymaps
-        local keymap = vim.keymap
+			-- `build` is used to run some command when the plugin is installed/updated.
+			-- This is only run then, not every time Neovim starts up.
+			build = 'make',
 
-        keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-        keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Fuzzy find recent files" })
-        keymap.set("n", "<leader>,", "<cmd>Telescope buffers<cr>", { desc = "Find string in cwd" })
-        keymap.set("n", "<leader>fs", "<cmd>Telescope git_status<cr>", { desc = "Find string under cursor in cwd" })
-        keymap.set("n", "<leader>fc", "<cmd>Telescope git commits<cr>", { desc = "Find todos" })
-    end,
+			-- `cond` is a condition used to determine whether this plugin should be
+			-- installed and loaded.
+			cond = function()
+				return vim.fn.executable 'make' == 1
+			end,
+		},
+		{ 'nvim-telescope/telescope-ui-select.nvim' },
+
+		-- Useful for getting pretty icons, but requires a Nerd Font.
+		{ 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+	},
+	config = function()
+		require("telescope").setup()
+
+		-- set keymaps
+		local keymap = vim.keymap
+
+		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+		keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Fuzzy find recent files" })
+		keymap.set("n", "<leader>,", "<cmd>Telescope buffers<cr>", { desc = "Find string in cwd" })
+		keymap.set("n", "<leader>fs", "<cmd>Telescope git_status<cr>", { desc = "Find string under cursor in cwd" })
+		keymap.set("n", "<leader>fc", "<cmd>Telescope git commits<cr>", { desc = "Find todos" })
+	end,
 }
 
 
