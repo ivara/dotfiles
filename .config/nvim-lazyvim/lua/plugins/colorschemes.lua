@@ -12,7 +12,11 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      transparent = false,
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
     },
   },
   { "shaunsingh/nord.nvim" },
@@ -22,7 +26,9 @@ return {
     name = "catppuccin",
     opts = {
       flavor = "mocha",
-      transparent_background = false,
+      transparent_background = true,
+      no_italic = false,
+      no_bold = false,
       integrations = {
         aerial = true,
         alpha = true,
