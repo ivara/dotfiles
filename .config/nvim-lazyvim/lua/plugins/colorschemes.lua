@@ -21,7 +21,7 @@ return {
   },
   { "shaunsingh/nord.nvim" },
   {
-    "caappuccin/nvim",
+    "catppuccin/nvim",
     lazy = false,
     name = "catppuccin",
     opts = {
