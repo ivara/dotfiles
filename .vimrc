@@ -11,9 +11,12 @@ set encoding=utf-8
 set visualbell
 set mouse=a
 
+" Set space as the leader key
+let mapleader = " "
+
 " Share clipboard with system
 set clipboard=unnamedplus
-
+set nocompatible
 "set foldmethod=syntax
 filetype plugin indent on
 colorscheme habamax
@@ -45,13 +48,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 call plug#end()
 
-" Set space as the leader key
-let mapleader = " "
 
 " Map 'jk' to Escape in insert mode
 inoremap jk <Esc>
 
-nnoremap <leader>e :Explore<CR>nnoremap <leader>e :Explore<CR>
+nnoremap <leader>e :Explore<CR>
 
 " Map <leader>1 to switch to buffer 1
 nnoremap <leader>1 :buffer 1<CR>
