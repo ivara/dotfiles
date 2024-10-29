@@ -1,9 +1,9 @@
 
 return {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.6",
+    -- tag = "0.1.6",
     dependencies = { 
-		"nvim-lua/plenary.nvim",
+    "nvim-lua/plenary.nvim",
 		{ -- If encountering errors, see telescope-fzf-native README for installation instructions
 			'nvim-telescope/telescope-fzf-native.nvim',
 
@@ -21,7 +21,29 @@ return {
 		{ 'nvim-tree/nvim-web-devicons' },
 	},
 	config = function()
-		require("telescope").setup()
+
+    local function find_command()
+      if 1 == vim.fn.executable("rg") then
+        return { "rg", "--files", "--color", "never", "-g", "!.git" }
+      elseif 1 == vim.fn.executable("fd") then
+        return { "fd", "--type", "f", "--color", "never", "-E", ".git" }
+      elseif 1 == vim.fn.executable("fdfind") then
+        return { "fdfind", "--type", "f", "--color", "never", "-E", ".git" }
+      elseif 1 == vim.fn.executable("find") and vim.fn.has("win32") == 0 then
+        return { "find", ".", "-type", "f" }
+      elseif 1 == vim.fn.executable("where") then
+        return { "where", "/r", ".", "*" }
+      end
+    end
+
+    require("telescope").setup({
+      pickers = {
+        find_files = {
+          find_command = find_command,
+          hidden = true,
+        },
+      },
+    })
 
 		-- set keymaps
 		local keymap = vim.keymap
@@ -30,7 +52,7 @@ return {
 		keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Fuzzy find recent files" })
 		keymap.set("n", "<leader>,", "<cmd>Telescope buffers<cr>", { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>fs", "<cmd>Telescope git_status<cr>", { desc = "Find string under cursor in cwd" })
-		keymap.set("n", "<leader>fc", "<cmd>Telescope git commits<cr>", { desc = "Find todos" })
+		-- keymap.set("n", "<leader>fc", "<cmd>Telescope git commits<cr>", { desc = "Find todos" })
 	end,
 }
 

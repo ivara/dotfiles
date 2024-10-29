@@ -22,7 +22,7 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 --
 -- -- clipboard
--- vim.o.clipboard = "unnamedplus"
+vim.o.clipboard = "unnamedplus"
 --
 -- -- Tabs and indentations
 vim.o.tabstop = 2
