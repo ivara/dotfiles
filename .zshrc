@@ -160,6 +160,7 @@ cd() {
 # adds time to startup
 #check_directory_for_new_repository
 
+export PATH="$PATH:/home/ivar/.dotnet/tools"
 
 export FZF_DEFAULT
 
