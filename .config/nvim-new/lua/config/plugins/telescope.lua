@@ -10,7 +10,7 @@ return {
 	  require('telescope').setup {
 		pickers = {
 		  find_files = {
-			theme = "ivy"
+			-- theme = "ivy"
 		  },
 		  colorscheme = {
 			enable_preview = true
@@ -28,7 +28,6 @@ return {
 	  vim.keymap.set("n", "<C-p>", require('telescope.builtin').find_files, { desc = "[F]ind [F]iles"})
 
 	  vim.keymap.set("n", "<leader>uc", require('telescope.builtin').colorscheme, { desc = "[U]se [C]olorscheme"})
--- { "<leader>uC",  "<cmd>Telescope colorscheme enable_preview<cr>", desc = "Colorscheme with preview" }
 	  vim.keymap.set("n", "<leader>fc", function()
 		require('telescope.builtin').find_files {
 		  cwd = vim.fn.stdpath("config")

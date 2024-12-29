@@ -58,6 +58,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Load Lazy plugin manage
--- -- Load Lazy plugin managerr
 require("config.lazy")
 
