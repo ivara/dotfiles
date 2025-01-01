@@ -1,9 +1,8 @@
-#alias vi="nvim"
-alias nvim-lazy="NVIM_APPNAME=nvim-lazyvim nvim" # LazyVim
-alias nvim-nvchad='NVIM_APPNAME=nvim-nvchad nvim' # NvChad
-alias nvim-kickstart='NVIM_APPNAME=nvim-kickstart nvim' # Kickstart
-alias nvim-astro='NVIM_APPNAME=nvim-astrovim nvim' # AstroVim
-alias nvim-lunar='NVIM_APPNAME=nvim-lunarvim nvim' # nvim-lunarvim
+# Brew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# remap so vi becomes neovim
+alias vi="nvim"
 
 vv() {
   # Assumes all configs exist in directories named ~/.config/nvim-*
@@ -109,21 +108,13 @@ plugins=(
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ls="exa --icons"
-alias la="exa --icons -a"
-alias ll="exa --icons -l"
-alias lt="exa --icons --tree --level=2"
-alias ltt="exa --icons --tree --level=3"
-alias lttt="exa --icons --tree --level=4"
-alias ltttt="exa --icons --tree --level=5"
+alias ls="eza --icons"
+alias la="eza --icons -a"
+alias ll="eza --icons -l"
+alias lt="eza --icons --tree --level=2"
+alias ltt="eza --icons --tree --level=3"
+alias lttt="eza --icons --tree --level=4"
+alias ltttt="eza --icons --tree --level=5"
 # load zsh-completions
 autoload -U compinit && compinit
 #neofetch
@@ -163,26 +154,61 @@ cd() {
 export PATH="$PATH:/home/ivar/.dotnet/tools"
 
 export FZF_DEFAULT
-
+export BAT_PAGER
 # fnm
-FNM_PATH="/home/ivara/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/ivara/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
+# FNM_PATH="/home/ivara/.local/share/fnm"
+# if [ -d "$FNM_PATH" ]; then
+#   export PATH="/home/ivara/.local/share/fnm:$PATH"
+#   eval "`fnm env`"
+# fi
 
+# Bat
+alias bathelp='bat --plain --language=help'
+help() {
+    "$@" --help 2>&1 | bathelp
+}
+batdiff() {
+    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+}
+
+# bat global help syntax highlighting
+alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+
+# bat man
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# export  BAT_THEME="Visual Studio Dark+"
+export  BAT_THEME="Catppuccin Mocha"
+
+## fnm
+# FNM_PATH="/home/ivar/.local/share/fnm"
+
+# if [ -d "$FNM_PATH" ]; then
+#   export PATH="/home/ivar/.local/share/fnm:$PATH"
+#   eval "`fnm env`"
+# fi
+
+# ## fnm automati cally use/switch node version of CD
+# eval "$(fnm env --use-on-cd)"
+
+# Open in tmux popup if on tmux, otherwise use --height mode
+export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+# Preview file content using bat (https://github.com/sharkdp/bat)
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+# Print tree structure in the preview window
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'eza --icons --tree --level=2 {}'"
 # Zoxide
 eval "$(zoxide init zsh)"
-# fnm
-FNM_PATH="/home/ivar/.local/share/fnm"
-
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/ivar/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
-
-## fnm automatically use/switch node version of CD
-eval "$(fnm env --use-on-cd)"
 
 # Starship.rs
 eval "$(starship init zsh)"
+

@@ -21,16 +21,6 @@
 [diff]
 	colorMoved = default
 	guitool = vscode
-[difftool "vscode"]
-	cmd = \"C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe\" --new-window --wait --diff \"$LOCAL\" \"$REMOTE\"
-	path = C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe
-[merge]
-	tool = vscode
-	conflictstyle = diff3
-	guitool = vscode
-[mergetool "vscode"]
-	cmd = \"C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe\" --new-window --wait --merge \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\"
-	path = C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe
 [fetch]
 	prune = true
 [pull]
@@ -45,9 +35,19 @@
 	path = ~/.gitconfig.local
 [rerere]
 	enabled = true
-[maintenance]
-	repo = D:/git/lernia/Lernia.Se.Mono
-	repo = D:/git/microsoft-authentication-library-for-js
-[mergetool "winmerge"]
-	path = C:/Program Files (x86)/WinMerge/winmergeu.exe
-	cmd = \"C:/Program Files (x86)/WinMerge/winmergeu.exe\" -e -u  -wl -wr -fm -dl \"Mine: $LOCAL\" -dm \"Merged: $BASE\" -dr \"Theirs: $REMOTE\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" -o \"$MERGED\"
+
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+	side-by-side = true
+	theme = "Catppuccin Mocha"
+	pager = bat
+[merge]
+    conflictstyle = zdiff3
