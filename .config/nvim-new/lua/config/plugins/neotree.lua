@@ -87,7 +87,8 @@ return {
 		-- }
 	  })
 
-	  vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle float reveal<CR>', { noremap = true, silent = true })
+	  vim.keymap.set('n', '<leader>E', '<cmd>Neotree toggle float reveal<CR>', { noremap = true, silent = true })
+	  vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle float reveal_root<CR>', { noremap = true, silent = true })
 	  -- vim.keymap.set('n', '<leader>b', '<cmd>Neotree toggle show buffers right <CR>', { noremap = true, silent = true })
 	  vim.keymap.set('n', '<leader>gs', '<cmd>Neotree float git_status <CR>', { noremap = true, silent = true })
 	  -- vim.keymap.set('n', '<leader>b', '<cmd>Neotree action=show source=buffers position=bottom toggle=true <CR>', { noremap = true, silent = true })
