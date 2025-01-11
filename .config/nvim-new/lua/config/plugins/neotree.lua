@@ -17,7 +17,9 @@ return {
 			hide_dotfiles = false,
 			hide_gitignored = false,
 			hide_by_name = {
-			  "node_modules"
+			  "node_modules",
+			  ".git",
+			  ".svelte-kit"
 			},
 			hide_by_pattern = {
 			  "**/bin",
@@ -88,7 +90,7 @@ return {
 	  })
 
 	  vim.keymap.set('n', '<leader>E', '<cmd>Neotree toggle float reveal<CR>', { noremap = true, silent = true })
-	  vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle float reveal_root<CR>', { noremap = true, silent = true })
+	  vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle reveal left<CR>', { noremap = true, silent = true })
 	  -- vim.keymap.set('n', '<leader>b', '<cmd>Neotree toggle show buffers right <CR>', { noremap = true, silent = true })
 	  vim.keymap.set('n', '<leader>gs', '<cmd>Neotree float git_status <CR>', { noremap = true, silent = true })
 	  -- vim.keymap.set('n', '<leader>b', '<cmd>Neotree action=show source=buffers position=bottom toggle=true <CR>', { noremap = true, silent = true })
