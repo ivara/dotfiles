@@ -3,8 +3,14 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/git/active ~/git/active/Lernia -mindepth 1 -maxdepth 1 -type d | fzf)
+	selected=$(find \
+		~/git/personal \
+		~/git/work/lernia \
+		~/git/work/active \
+		~/git/work/epic-react \
+		-mindepth 1 -maxdepth 1 -type d | fzf)
 fi
+
 
 if [[ -z $selected ]]; then
     exit 0
