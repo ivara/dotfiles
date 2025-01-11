@@ -6,7 +6,7 @@ return {
 
 	require('mini.icons').setup();
 	require('mini.move').setup({})
-	require('mini.indentscope').setup({})
+	-- require('mini.indentscope').setup({})
 	require("mini.pairs").setup({})
 	-- require('mini.statusline').setup()
 

@@ -30,7 +30,7 @@ return {
 		},
 		window = {
 		  focus_on_open = true,
-		  position = "right",
+		  position = "left",
 		  auto_preview = true,
 		},
 		source_selector = {
