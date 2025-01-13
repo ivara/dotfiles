@@ -1,4 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+#
 gui:
+  showRandomTip: true
+  nerdFontsVersion: "3"
+  # showDivergenceFromBaseBranch: arrowAndNumber
+  showNumstatInFilesView: true
+  # commitAuthorShortLength: 4
+  showBranchCommitHash: true
+  
+  shortTimeFormat: 15:04
+  # timeFormat: 02/01-06 # 2006-01-02
+  timeFormat: 02 Jan 2006 # 2006-01-02
+
+  # expandFocusedSidePanel: true
   theme:
     activeBorderColor:
       - '#fab387'
