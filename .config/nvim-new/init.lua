@@ -4,6 +4,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- persist undo history between runs
+vim.opt.undofile = true
+
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
