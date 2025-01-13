@@ -1,25 +1,51 @@
 gui:
- # Use the mocha catppuccin theme
   theme:
     activeBorderColor:
-      - '#fe640b'
+      - '#fab387'
       - bold
     inactiveBorderColor:
-      - '#6c6f85'
+      - '#a6adc8'
     optionsTextColor:
-      - '#1e66f5'
+      - '#89b4fa'
     selectedLineBgColor:
-      - '#ccd0da'
+      - '#313244'
     cherryPickedCommitBgColor:
-      - '#bcc0cc'
+      - '#45475a'
     cherryPickedCommitFgColor:
-      - '#fe640b'
+      - '#fab387'
     unstagedChangesColor:
-      - '#d20f39'
+      - '#f38ba8'
     defaultFgColor:
-      - '#4c4f69'
+      - '#cdd6f4'
     searchingActiveBorderColor:
-      - '#df8e1d'
+      - '#f9e2af'
 
   authorColors:
-    '*': '#7287fd'
+    '*': '#b4befe'
+
+
+# mocha/flamingo
+# gui:
+#   theme:
+#     activeBorderColor:
+#       - '#f2cdcd'
+#       - bold
+#     inactiveBorderColor:
+#       - '#a6adc8'
+#     optionsTextColor:
+#       - '#89b4fa'
+#     selectedLineBgColor:
+#       - '#313244'
+#     cherryPickedCommitBgColor:
+#       - '#45475a'
+#     cherryPickedCommitFgColor:
+#       - '#f2cdcd'
+#     unstagedChangesColor:
+#       - '#f38ba8'
+#     defaultFgColor:
+#       - '#cdd6f4'
+#     searchingActiveBorderColor:
+#       - '#f9e2af'
+#
+#   authorColors:
+#     '*': '#b4befe'
