@@ -32,6 +32,7 @@ return {
 		  focus_on_open = true,
 		  position = "left",
 		  auto_preview = true,
+		  width = 50
 		},
 		source_selector = {
 		  winbar = true,
