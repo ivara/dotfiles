@@ -29,7 +29,7 @@ return {
 		  enable()
 		end
 	  end
-	  vim.keymap.set("n", "<leader>uht", toggle, { desc = "Toggle Hardtime"})
+	  vim.keymap.set("n", "<leader>uh", toggle, { desc = "Toggle Hardtime"})
 	  -- vim.keymap.set("n", "<leader>uhe", enable, { desc = "Enable Hardtime"})
 	  -- vim.keymap.set("n", "<leader>uhd", disable, { desc = "Disable Hardtime"})
 	end
