@@ -63,3 +63,5 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
+[gc]
+	refLogExpire = 90.days
