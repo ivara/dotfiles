@@ -34,6 +34,9 @@ rfv() {
 export EDITOR=vim
 
 # If you come from bash you might have to change your $PATH.
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+
 export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:$PATH
 
 
