@@ -3,27 +3,36 @@ return {
   {
 	"m4xshen/hardtime.nvim",
 	dependencies = { "MunifTanjim/nui.nvim" },
-	-- couldn't figure out how to Toggle so uhe/uhd will do for now
-	keys = {
-	  {
-		"<leader>uhe",
-		function()
-		  vim.cmd("Hardtime enable")
-		  vim.notify("Hardtime enabled", vim.log.levels.INFO)
-		end,
-		desc = "[H]ardtime [e]nable"
-	  },
-	  {
-		"<leader>uhd",
-		function()
-		  vim.cmd("Hardtime disable")
-		  vim.notify("Hardtime disabled", vim.log.levels.WARN)
-		end,
-		desc = "[H]ardtime [d]isable"}
-	  },
-	  opts = {
-		-- Add "oil" to the disabled_filetypes
+	config = function()
+	  require('hardtime').setup({
+		enabled = true, -- default, but future proof for my toggle
 		disabled_filetypes = { "qf", "netrw", "NvimTree", "lazy", "mason", "oil" }
-	  }
-	},
+	  })
+
+	  local is_enabled = true
+	  local function enable()
+		vim.notify("Hardtime enabled", vim.log.levels.INFO)
+		vim.cmd("Hardtime enable")
+	  end
+
+	  local function disable()
+		vim.notify("Hardtime disable", vim.log.levels.WARN)
+		vim.cmd("Hardtime disable")
+	  end
+
+	  local function toggle()
+		if is_enabled == true then
+		  is_enabled = false
+		  disable()
+		else
+		  is_enabled = true
+		  enable()
+		end
+	  end
+	  vim.keymap.set("n", "<leader>uht", toggle, { desc = "Toggle Hardtime"})
+	  -- vim.keymap.set("n", "<leader>uhe", enable, { desc = "Enable Hardtime"})
+	  -- vim.keymap.set("n", "<leader>uhd", disable, { desc = "Disable Hardtime"})
+	end
   }
+}
+
