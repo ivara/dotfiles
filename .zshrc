@@ -15,6 +15,15 @@ vv() {
   NVIM_APPNAME=$(basename $config) nvim $@
 }
 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 rfv() {
 	# 1. Search for text in files using Ripgrep
 	# 2. Interactively narrow down the list using fzf
@@ -31,7 +40,7 @@ rfv() {
 ## set colors for LS_COLORS
 #eval `dircolors ~/.dircolors`
 
-export EDITOR=vim
+export EDITOR=nvim
 
 # If you come from bash you might have to change your $PATH.
 export DOTNET_ROOT=$HOME/.dotnet
