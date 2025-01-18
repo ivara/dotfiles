@@ -11,3 +11,6 @@ brew "lazygit"
 brew "ripgrep"
 brew "tokei"
 brew "onefetch"
+
+brew "yazi"
+brew "p7zip"
