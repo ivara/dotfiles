@@ -38,6 +38,14 @@ get_ssh_info() {
   echo "SSH host: $ssh_host"
 }
 
+
+# network_watcher() {
+# 	# Utföra felsökning direkt från CLI: Felsök nätverk, trafik eller status för tjänster:
+# 	az webapp show --name <app-name> --resource-group <resursgrupp-namn>
+# 	az network watcher test-connectivity --source-resource <app-id> --destination-port 443
+# }
+
+
 # Function to mount the remote filesystem using sshfs and open it with Neovim
 mount_and_edit() {
   local mount_point=~/remote_mount
@@ -59,11 +67,20 @@ connect_to_app_service() {
   az webapp ssh --resource-group $resource_group --name $app_service
 }
 
-# Function to list app services in the selected resource group
-list_app_services() {
-  echo "Listing app services in resource group: $resource_group"
-  az webapp list --resource-group $resource_group --query '[].{name:name, state:state}' -o table
+tail_appservice_log() {
+	echo "Tailing app service log"
+	az webapp log tail --name $app_service --resource-group $resource_group --verbose
 }
+
+list_appsettings() {
+	echo "Listing appsettings for $app_service"
+	az webapp config appsettings list --name $app_service --resource-group $resource_group
+}
+# # Function to list app services in the selected resource group
+# list_app_services() {
+#   echo "Listing app services in resource group: $resource_group"
+#   az webapp list --resource-group $resource_group --query '[].{name:name, state:state}' -o table
+# }
 
 # Function to list resources in the selected resource group and select one using fzf
 select_resource() {
@@ -76,6 +93,18 @@ select_resource() {
   echo "Selected resource: $resource"
 }
 
+list_old_resources() {
+	# Beräkna datum ett år tillbaka
+	one_year_ago=$(date -d "-1 year" +%Y-%m-%d)
+	"Fetching resources not updated since $one_year_ago"
+	# Använd detta datum i din az cli-fråga
+	az resource list --resource-group $resource_group --query "[?tags.lastUpdated < '${one_year_ago}']"
+}
+
+monitor_network() {
+	echo "Monitoring network for resource: $resource ..."
+	az monitor metrics list --resource-group $resource_group --resource $resource --metric "Network In" --interval PT1M
+}
 # Function to show details of the selected resource
 show_resource_details() {
   resource_name=$(echo $resource | awk '{print $1}')
@@ -84,9 +113,18 @@ show_resource_details() {
   az resource show --resource-group $resource_group --name $resource_name --resource-type $resource_type -o json | jq .
 }
 
+# 1. select resource
+# 2. select app_service
+# 3. select action: list appsettings, tail log, connect (ssh)
+#
 # Main script execution
 select_resource_group
-select_resource
-show_resource_details
-
+list_old_resources
+# select_app_service
+#select_resource
+#monitor_network
+#select_resource
+#show_resource_details
+#tail_appservice_log
 #connect_to_app_service
+#list_appsettings
