@@ -8,6 +8,7 @@ else
 		~/git/work/lernia \
 		~/git/work/active \
 		~/git/work/epic-react \
+		~/git/open-source \
 		-mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 

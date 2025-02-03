@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # Ensure you are in a Git repository
-if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
-    echo "Not inside a Git repository. Exiting."
-    exit 1
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  echo "Not inside a Git repository. Exiting."
+  exit 1
 fi
 
 # Get the current Git branch
 current_branch=$(git symbolic-ref --short HEAD)
 if [ -z "$current_branch" ]; then
-    echo "Could not determine the current branch. Exiting."
-    exit 1
+  echo "Could not determine the current branch. Exiting."
+  exit 1
 fi
 
 echo "Current branch: $current_branch"
@@ -20,7 +20,7 @@ repo_url=$(git remote get-url origin)
 # repo_name=$(basename -s .git "$repo_url")
 repo_name="Lernia.Se.Mono"
 echo "Current repo url: $repo_url"
-echo "Current repo name: $repo_repo_name"
+echo "Current repo name: $repo_name"
 # Set your Azure DevOps organization and project
 ORG_NAME="activesolution"
 PROJECT_NAME="lernia"
@@ -31,8 +31,8 @@ pipelines=$(az pipelines list --org "https://dev.azure.com/$ORG_NAME" --project 
 
 # Check if we have any pipelines associated with this repository
 if [ -z "$pipelines" ]; then
-    echo "No pipelines found for repository $repo_name. Exiting."
-    exit 1
+  echo "No pipelines found for repository $repo_name. Exiting."
+  exit 1
 fi
 
 # Use FZF to let the user select a pipeline
@@ -40,8 +40,8 @@ selected_pipeline=$(echo "$pipelines" | fzf --height=20% --border --preview 'ech
 
 # Check if a pipeline was selected
 if [ -z "$selected_pipeline" ]; then
-    echo "No pipeline selected. Exiting."
-    exit 1
+  echo "No pipeline selected. Exiting."
+  exit 1
 fi
 
 # Trigger the selected pipeline with the current branch
@@ -51,4 +51,3 @@ echo "Triggering pipeline $selected_pipeline for branch $current_branch..."
 az pipelines run --org "https://dev.azure.com/$ORG_NAME" --project "$PROJECT_NAME" --id "$selected_pipeline" --branch "$current_branch"
 
 echo "Build triggered successfully!"
-
