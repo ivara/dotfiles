@@ -15,6 +15,10 @@ vv() {
   NVIM_APPNAME=$(basename $config) nvim $@
 }
 
+function cheat() {
+	curl "cheat.sh/$*"
+}
+
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
