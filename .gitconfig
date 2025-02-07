@@ -35,33 +35,25 @@
 	path = ~/.gitconfig.local
 [rerere]
 	enabled = true
-
-
 [core]
-    pager = delta
-
+	pager = delta
 [interactive]
-    diffFilter = delta --color-only
-
+	diffFilter = delta --color-only
 [delta]
-    navigate = true  # use n and N to move between diff sections
-    dark = true      # or light = true, or omit for auto-detection
+	navigate = true
+	dark = true
 	side-by-side = true
-	theme = "Catppuccin Mocha"
+	theme = Catppuccin Mocha
 	pager = bat
 [merge]
-    conflictstyle = zdiff3
-; [credential "https://github.com"]
-; 	helper = 
-; 	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
-; [credential "https://gist.github.com"]
-; 	helper = 
-; 	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
-[credential "https://github.com"]
-	helper = 
-	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
+	conflictstyle = zdiff3
 [gc]
 	refLogExpire = 90.days
+[difftool "vscode"]
+	path = C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe
+	cmd = \"C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe\" --new-window --wait --diff \"$LOCAL\" \"$REMOTE\"
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
