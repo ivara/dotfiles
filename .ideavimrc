@@ -9,6 +9,15 @@
 
 " Source your .vimrc
 source ~/.vimrc
+" Additional enhancements
+"set number
+"set relativenumber
+"syntax on
+set ignorecase
+set smartcase
+"set completeopt=menuone,noinsert,noselect
+set undofile
+"set mouse=a
 
 set clipboard+=unnamed
 set clipboard+=ideaput
@@ -82,6 +91,16 @@ noremap <C-w>q :action CloseContent<CR>
 "noremap <leader>- :action SplitHorizontally<CR>
 "nnoremap <Leader>q :action CloseContent<CR>
 "noremap za :action CollapseExpandFoldRegion<CR>
+
+
+" Format the current document
+map <leader>k <Action>(ReformatCode)
+
+" Reload the configuration
+map \r :source ~/.ideavimrc<CR>
+
+" Edit the .ideavimrc file
+map \e :e ~/.ideavimrc<CR>
 
 map za <action>(ExpandCollapseToggleAction)
 "map gh <Action>(ShowErrorDescription)
