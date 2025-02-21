@@ -25,6 +25,8 @@
 	prune = true
 [pull]
 	rebase = true
+[push]
+	autoSetupRemote = true
 [rebase]
 	autoStash = false
 	autosquash = true
