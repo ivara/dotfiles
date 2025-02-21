@@ -12,8 +12,13 @@ return {
   {
 	"folke/tokyonight.nvim",
 	-- config = function()
-	--   vim.cmd.colorscheme "tokyonight"
-	-- end
-  },
-  { "rebelot/kanagawa.nvim", lazy = false },
-}
+	  --   vim.cmd.colorscheme "tokyonight"
+	  -- end
+	},
+	{ "rebelot/kanagawa.nvim", lazy = false },
+	{
+	  "rose-pine/neovim",
+	  name = "rose-pine",
+	  lazy = false
+	}
+  }
