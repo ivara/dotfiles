@@ -1,5 +1,17 @@
 # Brew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# Homebrew
+if [[ "$(uname)" == "Darwin" ]]; then
+  # macOS
+  if [[ -d "/opt/homebrew" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"  # För Apple Silicon
+  elif [[ -d "/usr/local" ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"  # För Intel Mac
+  fi
+elif [[ "$(uname -r)" == *"Microsoft"* ]]; then
+  # WSL
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
 # remap so vi becomes neovim
 alias vi="nvim"
@@ -7,10 +19,10 @@ alias vi="nvim"
 vv() {
   # Assumes all configs exist in directories named ~/.config/nvim-*
   local config=$(fd --max-depth 1 --glob 'nvim-*' ~/.config | fzf --prompt="Neovim Configs > " --layout=reverse --border --exit-0)
- 
+
   # If I exit fzf without selecting a config, don't open Neovim
   [[ -z $config ]] && echo "No config selected" && return
- 
+
   # Open Neovim with the selected config
   NVIM_APPNAME=$(basename $config) nvim $@
 }
