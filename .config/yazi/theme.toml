@@ -1,0 +1,12 @@
+# https://github.com/yazi-rs/flavors
+
+[flavor]
+dark = "catppuccin-macchiato"
+#use = "catppuccin-macchiato"
+#light = "catppuccin-macchiato"
+#dark = "ayu-dark"
+# use = "tokyo-night"
+#dark = "tokyo-night"
+#dark = "everforest-medium" # yuck - no!
+# use = "kanagawa-dragon"
+#dark = "kanagawa"
