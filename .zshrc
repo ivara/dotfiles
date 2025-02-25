@@ -219,7 +219,7 @@ alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 # bat man
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export BAT_THEME="Catppuccin Mocha"
-
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
 ## fnm
 # FNM_PATH="/home/ivar/.local/share/fnm"
 
