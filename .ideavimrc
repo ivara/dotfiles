@@ -68,6 +68,9 @@ map <leader>o <Action>(FileStructurePopup)
 nmap gI <action>(ReSharperGotoImplementation)
 nmap gr <action>(FindUsages)
 
+
+map <S-Space> <Action>(GotoNextError)
+
 " Navigating tabs
 nmap <s-l> <Action>(NextTab)
 nmap <s-h> <Action>(PreviousTab)
@@ -95,7 +98,8 @@ noremap <C-w>q :action CloseContent<CR>
 
 " Format the current document
 map <leader>k <Action>(ReformatCode)
-
+nmap <C-i> <Action>(Forward)| " https://youtrack.jetbrains.com/issue/VIM-44
+nmap <C-o> <Action>(Back)| " https://youtrack.jetbrains.com/issue/VIM-44 `nmap <C-o> :action Back<CR>|` doesn't work for some reason
 " Reload the configuration
 map \r :source ~/.ideavimrc<CR>
 
