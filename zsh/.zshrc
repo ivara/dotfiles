@@ -161,8 +161,16 @@ autoload -U compinit && compinit
 #neofetch
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [[ "$(uname)" == "Darwin" ]]; then
+  # macOS path for Homebrew-installed NVM
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+elif [[ "$(uname -r)" == *"Microsoft"* ]]; then
+  # WSL path for NVM (adjust the path to where NVM is installed in WSL)
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
 
 # pnpm
 export PNPM_HOME="/home/ivar/.local/share/pnpm"
@@ -252,3 +260,8 @@ eval "$(zoxide init zsh)"
 # Starship.rs
 eval "$(starship init zsh)"
 
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/ivar/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
