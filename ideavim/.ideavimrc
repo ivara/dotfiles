@@ -74,7 +74,8 @@ map <S-Space> <Action>(GotoNextError)
 " Navigating tabs
 nmap <s-l> <Action>(NextTab)
 nmap <s-h> <Action>(PreviousTab)
-
+map <Space>f :action GotoFile<CR>
+map <Space>h :action RecentFiles<CR>| " Like ":History" in vim
 nmap <leader>bd <action>(CloseEditor)
 nmap <leader>z <action>(ToggleDistractionFreeMode)
 noremap <leader><leader> :action Switcher<CR>
