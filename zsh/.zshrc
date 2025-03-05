@@ -4,9 +4,9 @@
 if [[ "$(uname)" == "Darwin" ]]; then
   # macOS
   if [[ -d "/opt/homebrew" ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"  # För Apple Silicon
+    eval "$(/opt/homebrew/bin/brew shellenv)"  #  Apple Silicon
   elif [[ -d "/usr/local" ]]; then
-    eval "$(/usr/local/bin/brew shellenv)"  # För Intel Mac
+    eval "$(/usr/local/bin/brew shellenv)"  # Intel Mac
   fi
 elif [[ "$(uname -r)" == *"Microsoft"* ]]; then
   # WSL
@@ -58,11 +58,25 @@ rfv() {
 
 export EDITOR=nvim
 
-# If you come from bash you might have to change your $PATH.
-export DOTNET_ROOT=$HOME/.dotnet
+##
+### DOTNET
+##
+# Detect system architecture (x64 or ARM)
+arch_type=$(uname -m)
+
+export DOTNET_ROOT=/usr/local/share/dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
-export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:$PATH
+# # Set .NET path based on architecture
+# if [[ "$arch_type" == "x86_64" ]]; then
+#     # Intel (x64) Mac or Ubuntu
+#     export PATH=$PATH:/usr/local/share/dotnet
+# elif [[ "$arch_type" == "arm64" ]]; then
+#     # Apple Silicon (M1/M2) Mac
+#     export PATH=$PATH:/opt/homebrew/share/dotnet
+#     # Uncomment the next line if you want to support default ARM install location as well
+#     export PATH=$PATH:/usr/local/share/dotnet
+# fi
 
 
 # Set list of themes to pick from when loading at random
@@ -172,14 +186,6 @@ elif [[ "$(uname -r)" == *"Microsoft"* ]]; then
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
-# pnpm
-export PNPM_HOME="/home/ivar/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
 # git repository greeter
 last_repository=
 check_directory_for_new_repository() {
@@ -196,21 +202,6 @@ cd() {
 	check_directory_for_new_repository
 }
 
-# optional, greet also when opening shell directly in repository directory
-# adds time to startup
-#check_directory_for_new_repository
-
-export PATH="$PATH:/home/ivar/.dotnet/tools"
-
-export FZF_DEFAULT
-export BAT_PAGER
-# fnm
-# FNM_PATH="/home/ivara/.local/share/fnm"
-# if [ -d "$FNM_PATH" ]; then
-#   export PATH="/home/ivara/.local/share/fnm:$PATH"
-#   eval "`fnm env`"
-# fi
-
 # Bat
 alias bathelp='bat --plain --language=help'
 help() {
@@ -226,19 +217,11 @@ alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
 # bat man
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export BAT_PAGER
 export BAT_THEME="Catppuccin Mocha"
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
-## fnm
-# FNM_PATH="/home/ivar/.local/share/fnm"
 
-# if [ -d "$FNM_PATH" ]; then
-#   export PATH="/home/ivar/.local/share/fnm:$PATH"
-#   eval "`fnm env`"
-# fi
-
-# ## fnm automati cally use/switch node version of CD
-# eval "$(fnm env --use-on-cd)"
-
+export FZF_DEFAULT
 # Open in tmux popup if on tmux, otherwise use --height mode
 export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
 
@@ -254,14 +237,16 @@ export FZF_CTRL_T_OPTS="
 export FZF_ALT_C_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'eza --icons --tree --level=2 {}'"
-# Zoxide
-eval "$(zoxide init zsh)"
-
-# Starship.rs
-eval "$(starship init zsh)"
 
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/ivar/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
+
+# Zoxide
+eval "$(zoxide init zsh)"
+
+# Starship.rs
+eval "$(starship init zsh)"
+
