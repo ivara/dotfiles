@@ -1,5 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
 #
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+#
 gui:
   showRandomTip: true
   nerdFontsVersion: "3"
@@ -7,7 +9,7 @@ gui:
   showNumstatInFilesView: true
   # commitAuthorShortLength: 4
   showBranchCommitHash: true
-  
+
   shortTimeFormat: 15:04
   # timeFormat: 02/01-06 # 2006-01-02
   timeFormat: 02 Jan 2006 # 2006-01-02
@@ -15,28 +17,27 @@ gui:
   # expandFocusedSidePanel: true
   theme:
     activeBorderColor:
-      - '#fab387'
+      - "#fab387"
       - bold
     inactiveBorderColor:
-      - '#a6adc8'
+      - "#a6adc8"
     optionsTextColor:
-      - '#89b4fa'
+      - "#89b4fa"
     selectedLineBgColor:
-      - '#313244'
+      - "#313244"
     cherryPickedCommitBgColor:
-      - '#45475a'
+      - "#45475a"
     cherryPickedCommitFgColor:
-      - '#fab387'
+      - "#fab387"
     unstagedChangesColor:
-      - '#f38ba8'
+      - "#f38ba8"
     defaultFgColor:
-      - '#cdd6f4'
+      - "#cdd6f4"
     searchingActiveBorderColor:
-      - '#f9e2af'
+      - "#f9e2af"
 
   authorColors:
-    '*': '#b4befe'
-
+    "*": "#b4befe"
 
 # mocha/flamingo
 # gui:
@@ -63,3 +64,20 @@ gui:
 #
 #   authorColors:
 #     '*': '#b4befe'
+
+git:
+  # Command used when displaying the current branch git log in the main window
+  branchLogCmd: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=short {{branchName}} --
+
+  # lg = log --graph --decorate --pretty=format:'%C(yellow)%h%C(reset)%C(red)%d%C(reset) %s %C(green)%cr %C(bold blue)%an%C(reset)'
+  # branchLogCmd: git log --graph --color=always  --decorate --date=relative --pretty=medium --oneline {{branchName}} --
+  # branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=short  {{branchName}} --"
+
+  # Command used to display git log of all branches in the main window.
+  # Deprecated: Use `allBranchesLogCmds` instead.
+  allBranchesLogCmd: git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=short
+
+  fetchAll: true
+
+  log:
+    showWholeGraph: true
