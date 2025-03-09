@@ -67,7 +67,8 @@ gui:
 
 git:
   # Command used when displaying the current branch git log in the main window
-  branchLogCmd: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=short {{branchName}} --
+  # branchLogCmd: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=short {{branchName}} --
+  branchLogCmd: git log --oneline --decorate --color=always --first-parent {{branchName}} --
 
   # lg = log --graph --decorate --pretty=format:'%C(yellow)%h%C(reset)%C(red)%d%C(reset) %s %C(green)%cr %C(bold blue)%an%C(reset)'
   # branchLogCmd: git log --graph --color=always  --decorate --date=relative --pretty=medium --oneline {{branchName}} --
