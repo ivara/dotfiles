@@ -97,7 +97,7 @@ batdiff() {
 # ------------------------------
 export EDITOR=nvim
 export DOTNET_ROOT=/usr/local/share/dotnet
-export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools:~/.dotnet/tools
 export NVM_DIR="$HOME/.nvm"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export BAT_PAGER
@@ -111,6 +111,9 @@ export FZF_CTRL_T_OPTS="
 export FZF_ALT_C_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'eza --icons --tree --level=2 {}'"
+
+
+
 
 # ------------------------------
 # Plugin Configuration
