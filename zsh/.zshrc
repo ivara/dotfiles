@@ -103,11 +103,13 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export BAT_PAGER
 export BAT_THEME="Catppuccin Mocha"
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
-export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
+export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top --info=inline'
+# get list of files and directories
 export FZF_CTRL_T_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'bat -n --color=always {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+# get list of only directories
 export FZF_ALT_C_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'eza --icons --tree --level=2 {}'"
