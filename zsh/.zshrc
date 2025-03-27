@@ -17,7 +17,7 @@ fi
 # ------------------------------
 # Aliases
 # ------------------------------
-alias vi="nvim"
+alias vi="NVIM_APPNAME=nvim-lazyvim nvim"
 alias ls="eza --icons"
 alias la="eza --icons -a"
 alias ll="eza --icons -l"
