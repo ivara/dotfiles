@@ -68,6 +68,13 @@ map <leader>o <Action>(FileStructurePopup)
 nmap gI <action>(ReSharperGotoImplementation)
 nmap gr <action>(FindUsages)
 
+" Move current line or selected lines up
+"nmap <A-k> <Action>(MoveLineUp)
+"vnoremap <A-k> <Action>(MoveLineUp)
+
+" Move current line or selected lines down
+"nmap <A-j> <Action>(MoveLineDown)
+"vnoremap <A-j> <Action>(MoveLineDown)
 
 map <S-Space> <Action>(GotoNextError)
 
