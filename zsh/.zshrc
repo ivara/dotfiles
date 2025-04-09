@@ -100,8 +100,10 @@ export DOTNET_ROOT=/usr/local/share/dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools:~/.dotnet/tools
 export NVM_DIR="$HOME/.nvm"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export BAT_PAGER
-export BAT_THEME="Catppuccin Mocha"
+export PAGER=less
+# export BAT_PAGER="less"
+# export BAT_THEME="Catppuccin Frappe"
+export BAT_THEME="Visual Studio Dark+"
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
 export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top --info=inline'
 # get list of files and directories
