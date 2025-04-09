@@ -1,66 +1,81 @@
 [alias]
-	amend-all = !git add -A && git commit --amend --no-edit
-	cb = !git branch --all | grep -v '^[*+]' | awk '{print $1}' | fzf -0 --preview 'git show --color=always {-1}' | sed 's/remotes\\/origin\\///g' | xargs -r git checkout
-	alias = !git config -l | grep alias
-	up = fetch --all --prune
-	undo = reset --soft HEAD^
-	s = status
-	co = checkout
-	lg = log --graph --decorate --pretty=format:'%C(yellow)%h%C(reset)%C(red)%d%C(reset) %s %C(green)%cr %C(bold blue)%an%C(reset)'
-	b = !git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'
-	bhistory = log --graph --oneline --decorate --abbrev-commit --first-parent --pretty=format:'%C(yellow)%h%C(reset) -%C(red)%d%C(reset) %s %C(green)(%cr) %C(bold blue)<%an>%C(reset)'
-	overview = log --graph --oneline --decorate --all
-	gone = !git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}'
-	gone-delete = !git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
-	start-over = "!git reset --hard origin/$(git symbolic-ref --short HEAD); git clean -fd"
-	please = push --force-with-lease
-	uncommit = reset --soft HEAD~1
-	crap = ls-files -c -i --exclude-standard
-	fixup = !git log -n 50 --pretty=format:\"%h %s\" --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup
-	last = log -1 HEAD --stat
+  fa = fetch --all
+  l2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+  l = log --graph --oneline --decorate --all
+  amend-all = !git add -A && git commit --amend --no-edit
+  cb = !git branch --all | grep -v '^[*+]' | awk '{print $1}' | fzf -0 --preview 'git show --color=always {-1}' | sed 's/remotes\\/origin\\///g' | xargs -r git checkout
+  alias = !git config -l | grep alias
+  up = fetch --all --prune
+  undo = reset --soft HEAD^
+  s = status
+  co = checkout
+  lg = log --graph --decorate --pretty=format:'%C(yellow)%h%C(reset)%C(red)%d%C(reset) %s %C(green)%cr %C(dim white)%an%C(reset)'
+  b = !git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'
+  bhistory = log --graph --oneline --decorate --abbrev-commit --first-parent --pretty=format:'%C(yellow)%h%C(reset) -%C(red)%d%C(reset) %s %C(green)(%cr) %C(bold blue)<%an>%C(reset)'
+  overview = log --graph --oneline --decorate --all
+  gone = !git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}'
+  gone-delete = !git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
+  start-over = "!git reset --hard origin/$(git symbolic-ref --short HEAD); git clean -fd"
+  please = push --force-with-lease
+  uncommit = reset --soft HEAD~1
+  crap = ls-files -c -i --exclude-standard
+  fixup = !git log -n 50 --pretty=format:\"%h %s\" --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup
+  last = log -1 HEAD --stat
 [diff]
-	colorMoved = default
-	guitool = vscode
+  colorMoved = default
+  guitool = vscode
 [fetch]
-	prune = true
+  prune = true
 [pull]
-	rebase = true
+  rebase = true
 [push]
-	autoSetupRemote = true
+  autoSetupRemote = true
 [rebase]
-	autoStash = false
-	autosquash = true
-	updateRefs = true
+  autoStash = false
+  autosquash = true
+  updateRefs = true
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [include]
-	path = ~/.gitconfig.local
+  path = ~/.gitconfig.local
 [rerere]
-	enabled = true
+  enabled = true
 [core]
-	pager = delta
+  pager = delta
+	excludesfile = /Users/ivar/.gitignore_global
 [interactive]
-	diffFilter = delta --color-only
+  diffFilter = delta --color-only
 [delta]
-	navigate = true
-	dark = true
-	; side-by-side = true
-	theme = Catppuccin Mocha
-	; pager = bat
+  navigate = true
+  dark = true
+  ; side-by-side = true
+  theme = Catppuccin Mocha
+  ; pager = bat
 [merge]
-	conflictstyle = zdiff3
+  conflictstyle = zdiff3
 [gc]
-	refLogExpire = 90.days
+  refLogExpire = 90.days
 [difftool "vscode"]
-	path = C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe
-	cmd = \"C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe\" --new-window --wait --diff \"$LOCAL\" \"$REMOTE\"
+  path = C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe
+  cmd = \"C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe\" --new-window --wait --diff \"$LOCAL\" \"$REMOTE\"
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
 [credential]
-	helper = 
-	helper = /usr/local/share/gcm-core/git-credential-manager
+  helper = 
+  helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
-	useHttpPath = true
+  useHttpPath = true
+[user]
+	name = Ivar Åsell
+	email = ivar.asell@activesolution.se
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/ivar/.stCommitMsg

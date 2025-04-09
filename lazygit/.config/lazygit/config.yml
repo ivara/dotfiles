@@ -67,12 +67,13 @@ gui:
 
 git:
   # Command used when displaying the current branch git log in the main window
-  # branchLogCmd: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=short {{branchName}} --
-  branchLogCmd: git log --graph --oneline --decorate --color=always {{branchName}} --
+  branchLogCmd: git log --graph --oneline --color=always --abbrev-commit --decorate --date=relative --first-parent {{branchName}} --
+  # branchLogCmd: git log --graph --oneline --decorate --color=always {{branchName}} --first-parent --
+  # branchLogCmd: git log --graph --oneline --decorate --color=always {{branchName}} --first-parent --
   #--first-parent 
   # lg = log --graph --decorate --pretty=format:'%C(yellow)%h%C(reset)%C(red)%d%C(reset) %s %C(green)%cr %C(bold blue)%an%C(reset)'
-  # branchLogCmd: git log --graph --color=always  --decorate --date=relative --pretty=medium --oneline {{branchName}} --
-  # branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=short  {{branchName}} --"
+#   branchLogCmd: git log --graph --color=always  --decorate --date=relative --oneline {{branchName}} --
+#  --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all # branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=short  {{branchName}} --"
 
   # Command used to display git log of all branches in the main window.
   # Deprecated: Use `allBranchesLogCmds` instead.
