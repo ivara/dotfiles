@@ -1,28 +1,18 @@
-" https://towardsdatascience.com/the-essential-ideavim-remaps-291d4cd3971b
-"
-"
-" .ideavimrc is a configuration file for IdeaVim plugin. It uses
-"   the same commands as the original .vimrc configuration.
-" You can find a list of commands here: https://jb.gg/h38q75
-" Find more examples here: https://jb.gg/share-ideavimrc
-"let mapleader=" "
-
 " Source your .vimrc
 source ~/.vimrc
 " Additional enhancements
 "set number
 "set relativenumber
-"syntax on
+syntax on
 set ignorecase
 set smartcase
 "set completeopt=menuone,noinsert,noselect
 set undofile
-"set mouse=a
+set mouse=a
 
 set clipboard+=unnamed
 set clipboard+=ideaput
 
-set NERDTree
 noremap <leader>e :NERDTreeToggle<CR>
 noremap <leader>x :action CloseContent<CR>
 " Controls selection behaviour with special keys.
@@ -51,6 +41,8 @@ Plug 'machakann/vim-highlightedyank'
 " Commentary plugin
 Plug 'tpope/vim-commentary'
 
+Plug 'preservim/nerdtree'
+
 " configure WhichKey
 " https://plugins.jetbrains.com/plugin/15976-which-key
 set which-key
@@ -67,7 +59,6 @@ map <leader>o <Action>(FileStructurePopup)
 
 nmap gI <action>(ReSharperGotoImplementation)
 nmap gr <action>(FindUsages)
-
 " Move current line or selected lines up
 "nmap <A-k> <Action>(MoveLineUp)
 "vnoremap <A-k> <Action>(MoveLineUp)
@@ -102,10 +93,14 @@ noremap <C-w>q :action CloseContent<CR>
 "noremap <leader>- :action SplitHorizontally<CR>
 "nnoremap <Leader>q :action CloseContent<CR>
 "noremap za :action CollapseExpandFoldRegion<CR>
+map zm <Action>(RiderCollapseToDefinitions)
+map zo <Action>(ExpandAllRegions)
+map za <action>(ExpandCollapseToggleAction)
 
+map <leader>cc <action>(Refactorings.QuickListPopupAction)
+map <leader>cr <action>(RenameElement)
+map <leader>cf <Action>(ReformatCode)
 
-" Format the current document
-map <leader>k <Action>(ReformatCode)
 nmap <C-i> <Action>(Forward)| " https://youtrack.jetbrains.com/issue/VIM-44
 nmap <C-o> <Action>(Back)| " https://youtrack.jetbrains.com/issue/VIM-44 `nmap <C-o> :action Back<CR>|` doesn't work for some reason
 " Reload the configuration
@@ -114,7 +109,6 @@ map \r :source ~/.ideavimrc<CR>
 " Edit the .ideavimrc file
 map \e :e ~/.ideavimrc<CR>
 
-map za <action>(ExpandCollapseToggleAction)
 "map gh <Action>(ShowErrorDescription)
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
