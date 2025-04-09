@@ -28,7 +28,7 @@ alias ltttt="eza --icons --tree --level=5"
 alias bathelp='bat --plain --language=help'
 alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
-
+alias gdu='gdu-go'
 
 # ------------------------------
 # Functions
