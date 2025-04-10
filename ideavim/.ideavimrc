@@ -47,14 +47,27 @@ Plug 'preservim/nerdtree'
 " https://plugins.jetbrains.com/plugin/15976-which-key
 set which-key
 set notimeout " set timeoutlen=5000
-let g:WhichKey_ShowVimActions = "false"
-let g:WhichKeyDesc_goto_top = "gg goto first line"
-let g:WhichKey_ShowTypedSequence = "false"
-let g:WhichKey_SortCaseSensitive = "false"
-let g:WhichKey_FontSize=12
-let g:WhichKey_Divider=" "
-let g:WhichKey_CommandStyle=""
+let g:WhichKey_CommandStyle="none"
 let g:WhichKey_CommandColor="default"
+let g:WhichKey_Divider=" → "
+let g:WhichKey_FontSize=14
+let g:WhichKey_KeyStyle = "bold"
+let g:WhichKey_KeyColor = "#eda56b"
+"let g:WhichKey_KeyColor = "default"
+let g:WhichKey_PrefixStyle = "italic"
+let g:WhichKey_PrefixColor = "#c969f5"
+let g:WhichKey_ShowVimActions = "true"
+let g:WhichKey_ShowTypedSequence = "true"
+let g:WhichKey_SortCaseSensitive = "false"
+
+let g:WhichKeyDesc_goto_top = "gg goto first line"
+let g:WhichKeyDesc_linenumber_toggle        = "<leader>ul  Toggle line numbers"
+let g:WhichKeyDesc_linenumber_relative        = "<leader>ul Toggle Relative line numbers"
+let g:WhichKeyDesc_windows        = "<leader>w  Windows"
+let g:WhichKeyDesc_windows_delete = "<leader>wd delete"
+let g:WhichKeyDesc_windows_split  = "<leader>ws split below"
+
+
 map <leader>o <Action>(FileStructurePopup)
 
 nmap gI <action>(ReSharperGotoImplementation)
@@ -100,6 +113,9 @@ map za <action>(ExpandCollapseToggleAction)
 map <leader>cc <action>(Refactorings.QuickListPopupAction)
 map <leader>cr <action>(RenameElement)
 map <leader>cf <Action>(ReformatCode)
+
+"map <leader>gg <Action>(Git)
+"map <leader>gc <Action>(ActivateCommitToolWindow)
 
 nmap <C-i> <Action>(Forward)| " https://youtrack.jetbrains.com/issue/VIM-44
 nmap <C-o> <Action>(Back)| " https://youtrack.jetbrains.com/issue/VIM-44 `nmap <C-o> :action Back<CR>|` doesn't work for some reason
