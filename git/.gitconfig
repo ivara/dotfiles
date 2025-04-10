@@ -45,12 +45,25 @@
 	excludesfile = /Users/ivar/.gitignore_global
 [interactive]
   diffFilter = delta --color-only
+[include]
+	path = /Users/ivar/.config/catppuccin.gitconfig
 [delta]
+  ;features = catppuccin-frappe
+  ;theme = Catppuccin Macchiato
+  ;features = collared-trogon
   navigate = true
   dark = true
-  ; side-by-side = true
-  theme = Catppuccin Mocha
-  ; pager = bat
+  line-numbers = true
+  diff-so-fancy = true
+  ; diff-highlight = true
+  ;commit-decoration-style = ol
+  ;file-decoration-style = "#606018" underline
+  ;hunk-header-decoration-style = "#022b45" box ul
+  ;light = true
+  ;theme=github
+  ;side-by-side = true
+  ;theme = gruvbox-dark
+  ;pager = bat
 [merge]
   conflictstyle = zdiff3
 [gc]
