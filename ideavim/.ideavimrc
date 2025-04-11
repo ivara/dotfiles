@@ -61,6 +61,8 @@ let g:WhichKey_ShowTypedSequence = "true"
 let g:WhichKey_SortCaseSensitive = "false"
 
 let g:WhichKeyDesc_goto_top = "gg goto first line"
+let g:WhichKeyDesc_findfile = "<leader>f Find file"
+let g:WhichKeyDesc_recent = "<leader>h Recent files"
 let g:WhichKeyDesc_linenumber_toggle        = "<leader>ul  Toggle line numbers"
 let g:WhichKeyDesc_linenumber_relative        = "<leader>ul Toggle Relative line numbers"
 let g:WhichKeyDesc_windows        = "<leader>w  Windows"
