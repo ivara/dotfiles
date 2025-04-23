@@ -1,20 +1,69 @@
+# .zshrc [Read when interactive]
+#
+# .zshenv → .zprofile → .zshrc → .zlogin → .zlogout
+# -----------------------------------------------
+# everything needed only for interactive usage
+# prompt, command completion, aliases, functions, output coloring, aliases, key bindings
+#
+#
+#
+# Choose where to put a setting
+# - if it is needed by a command run non-interactively: .zshenv
+# - if it should be updated on each new shell: .zshenv
+# - if it runs a command which may take some time to complete: .zprofile
+# - if it is related to interactive usage: .zshrc
+# - if it is a command to be run when the shell is fully setup: .zlogin
+# - if it releases a resource acquired at login: .zlogout
+# ---------------------------------------------
+
+# Load completion system
+autoload -Uz compinit
+compinit
+
+# History settings
+HISTFILE="$XDG_STATE_HOME/zsh/history"
+HISTSIZE=10000
+SAVEHIST=10000
+
+
+# zsh options
+setopt no_beep       # disable terminal bell
+
+# When deleting with <C-w>, delete file names at a time.
+WORDCHARS=${WORDCHARS/\/}
+
+# Delete duplicates first when HISTFILE size exceeds HISTSIZE.
+setopt hist_expire_dups_first
+
+# Share history between windows.
+setopt SHARE_HISTORY
+
+# Ignore duplicated commands history list.
+setopt hist_ignore_dups
+
+# Plugins (example with zinit)
+# source "${XDG_DATA_HOME}/zinit/zinit.git/zinit.zsh"
+# zinit light zsh-users/zsh-autosuggestions
+# zinit light zsh-users/zsh-syntax-highlighting
+
+
 # Uncomment this (and last line in file) to profile load times in config
 # zmodload zsh/zprof
 
 # ------------------------------
 # Homebrew Configuration
 # ------------------------------
-if [[ "$(uname)" == "Darwin" ]]; then
-  # macOS
-  if [[ -d "/opt/homebrew" ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"  # Apple Silicon
-  elif [[ -d "/usr/local" ]]; then
-    eval "$(/usr/local/bin/brew shellenv)"  # Intel Mac
-  fi
-elif [[ "$(uname -r)" == *"Microsoft"* ]]; then
-  # WSL
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
+# if [[ "$(uname)" == "Darwin" ]]; then
+#   # macOS
+#   if [[ -d "/opt/homebrew" ]]; then
+#     eval "$(/opt/homebrew/bin/brew shellenv)"  # Apple Silicon
+#   elif [[ -d "/usr/local" ]]; then
+#     eval "$(/usr/local/bin/brew shellenv)"  # Intel Mac
+#   fi
+# elif [[ "$(uname -r)" == *"Microsoft"* ]]; then
+#   # WSL
+#   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# fi
 
 
 # ------------------------------
@@ -86,39 +135,36 @@ cd() {
   check_directory_for_new_repository
 }
 
-help() {
-  "$@" --help 2>&1 | bathelp
-}
-
-batdiff() {
-  git diff --name-only --relative --diff-filter=d | xargs bat --diff
-}
-
+# help() {
+#   "$@" --help 2>&1 | bathelp
+# }
+#
+# batdiff() {
+#   git diff --name-only --relative --diff-filter=d | xargs bat --diff
+# }
+#
 
 # ------------------------------
 # Environment Variables
 # ------------------------------
-export EDITOR=nvim
-export DOTNET_ROOT=/usr/local/share/dotnet
-export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools:~/.dotnet/tools
-export NVM_DIR="$HOME/.nvm"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export PAGER=less
+# export PAGER=less
 # export BAT_PAGER="less"
 # export BAT_THEME="Catppuccin Frappe"
-export BAT_THEME="Visual Studio Dark+"
-export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
-export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top --info=inline'
-# get list of files and directories
-export FZF_CTRL_T_OPTS="
-  --walker-skip .git,node_modules,target
-  --preview 'bat -n --color=always {}'
-  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
-# get list of only directories
-export FZF_ALT_C_OPTS="
-  --walker-skip .git,node_modules,target
-  --preview 'eza --icons --tree --level=2 {}'"
 
+# TODO: move or setup separate config files
+# export BAT_THEME="Visual Studio Dark+"
+# export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
+# export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top --info=inline'
+# # get list of files and directories
+# export FZF_CTRL_T_OPTS="
+#   --walker-skip .git,node_modules,target
+#   --preview 'bat -n --color=always {}'
+#   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+# # get list of only directories
+# export FZF_ALT_C_OPTS="
+#   --walker-skip .git,node_modules,target
+#   --preview 'eza --icons --tree --level=2 {}'"
+#
 
 # Load NVM
 # if [[ "$(uname)" == "Darwin" ]]; then
@@ -128,6 +174,7 @@ export FZF_ALT_C_OPTS="
 #   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 #   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 # fi
+
 #
 # Docker CLI completions
 # fpath=(/Users/ivar/.docker/completions $fpath)
@@ -135,10 +182,14 @@ export FZF_ALT_C_OPTS="
 # export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm, without auto-using the default version
+#export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm, without auto-using the default version
 
-autoload -Uz compinit && compinit
+# autoload -Uz compinit && compinit
+#
+# # Use a completion menu.
+# zstyle ':completion:*' menu select
+#
 
 # Zoxide
 eval "$(zoxide init zsh)"
