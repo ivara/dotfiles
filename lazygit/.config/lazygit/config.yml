@@ -70,8 +70,10 @@ git:
     colorArg: always
     # useConfig: false
     pager: delta --dark --paging=never --diff-so-fancy
-  # Command used when displaying the current branch git log in the main window
-  branchLogCmd: git log --graph --oneline --color=always --abbrev-commit --decorate --date=relative --first-parent {{branchName}} --
+    # Command used when displaying the current branch git log in the main window
+  #branchLogCmd:
+  #  git log --graph --oneline --color=always --abbrev-commit --decorate --date=relative --first-parent {{branchName}} --
+  #branchLogCmd: git log --graph --decorate --pretty=format:'%C(yellow)%h%C(reset)%C(red)%d%C(reset) %s %C(green)%cr %C(dim white)%an%C(reset)' --first-parent {{branchName}} --
   # branchLogCmd: git log --graph --oneline --decorate --color=always {{branchName}} --first-parent --
   # branchLogCmd: git log --graph --oneline --decorate --color=always {{branchName}} --first-parent --
   #--first-parent
@@ -81,9 +83,6 @@ git:
 
   # Command used to display git log of all branches in the main window.
   # Deprecated: Use `allBranchesLogCmds` instead.
-  allBranchesLogCmd: git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=short
-
-  fetchAll: true
-
+  #allBranchesLogCmd: git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=
   log:
     showWholeGraph: true
