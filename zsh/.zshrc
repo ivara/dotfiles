@@ -1,3 +1,6 @@
+# Uncomment this (and last line in file) to profile load times in config
+# zmodload zsh/zprof
+
 # ------------------------------
 # Homebrew Configuration
 # ------------------------------
@@ -17,7 +20,7 @@ fi
 # ------------------------------
 # Aliases
 # ------------------------------
-alias vi="NVIM_APPNAME=nvim-lazyvim nvim"
+# alias vi="NVIM_APPNAME=nvim-lazyvim nvim"
 alias ls="eza --icons"
 alias la="eza --icons -a"
 alias ll="eza --icons -l"
@@ -117,32 +120,24 @@ export FZF_ALT_C_OPTS="
   --preview 'eza --icons --tree --level=2 {}'"
 
 
-
-
-# ------------------------------
-# Plugin Configuration
-# ------------------------------
-plugins=(
-  git
-  zsh-completions
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-)
-
-# Load zsh-completions
-autoload -U compinit && compinit
-
 # Load NVM
-if [[ "$(uname)" == "Darwin" ]]; then
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-elif [[ "$(uname -r)" == *"Microsoft"* ]]; then
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-fi
-
+# if [[ "$(uname)" == "Darwin" ]]; then
+#   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+#   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+# elif [[ "$(uname -r)" == *"Microsoft"* ]]; then
+#   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+#   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# fi
+#
 # Docker CLI completions
-fpath=(/Users/ivar/.docker/completions $fpath)
+# fpath=(/Users/ivar/.docker/completions $fpath)
+
+# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm, without auto-using the default version
+
 autoload -Uz compinit && compinit
 
 # Zoxide
@@ -153,4 +148,7 @@ eval "$(starship init zsh)"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+
+# uncomment this (and first line in this file) to profile what takes time to load in config
+# zprof
 
