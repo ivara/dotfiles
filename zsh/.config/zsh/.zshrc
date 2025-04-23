@@ -188,7 +188,7 @@ cd() {
 # autoload -Uz compinit && compinit
 #
 # # Use a completion menu.
-# zstyle ':completion:*' menu select
+zstyle ':completion:*' menu select
 #
 
 # Zoxide
