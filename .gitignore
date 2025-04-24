@@ -4,3 +4,5 @@
 .DS_Store
 Icon?
 .AppleDouble
+.zcompdump
+.zsh_history
