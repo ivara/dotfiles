@@ -1,0 +1,21 @@
+[core]
+	##
+	## Windows 
+	## 
+	#autocrlf = true
+	#editor = \"C:\\Users\\ivara\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
+
+	##
+	## Linux
+	## 
+	#autocrlf = input 
+
+[credential]
+	##
+	## Linux (to get auth from windows)
+	##
+	#helper = /mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe
+[user]
+	name = Ivar Åsell
+	email = ivar.asell@activesolution.se
+

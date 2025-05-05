@@ -82,6 +82,12 @@ alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 alias gdu='gdu-go'
 
+# git stuff
+alias gd="git diff"
+alias gs="git status --short"
+alias gl="git lg"
+alias gl='git log --graph --all --pretty=format:"%C(magenta)%h %C(white) %an  %ar%C(blue)  %D%n%s%n"'
+
 # ------------------------------
 # Functions
 # ------------------------------

@@ -21,9 +21,13 @@
   crap = ls-files -c -i --exclude-standard
   fixup = !git log -n 50 --pretty=format:\"%h %s\" --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup
   last = log -1 HEAD --stat
+[status]
+  showBranch = true
+  showStash = true
 [diff]
   colorMoved = default
   guitool = vscode
+  tool = delta
 [fetch]
   prune = true
 [pull]
@@ -37,16 +41,16 @@
 [init]
   defaultBranch = main
 [include]
-  path = ~/.gitconfig.local
+  path = ~/.config/git/config.local
 [rerere]
   enabled = true
 [core]
   pager = delta
-	excludesfile = /Users/ivar/.gitignore_global
+  excludesfile = /Users/ivar/.gitignore_global
 [interactive]
   diffFilter = delta --color-only
 [include]
-	path = /Users/ivar/.config/catppuccin.gitconfig
+  path = /Users/ivar/.config/catppuccin.gitconfig
 [delta]
   ;features = catppuccin-frappe
   ;theme = Catppuccin Macchiato
@@ -71,11 +75,6 @@
 [difftool "vscode"]
   path = C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe
   cmd = \"C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe\" --new-window --wait --diff \"$LOCAL\" \"$REMOTE\"
-[filter "lfs"]
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
-  clean = git-lfs clean -- %f
 [credential]
   helper = 
   helper = /usr/local/share/gcm-core/git-credential-manager
@@ -84,11 +83,3 @@
 [user]
 	name = Ivar Åsell
 	email = ivar.asell@activesolution.se
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[commit]
-	template = /Users/ivar/.stCommitMsg

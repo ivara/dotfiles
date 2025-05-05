@@ -1,0 +1,5 @@
+# Global git ignore
+.DS_Store
+
+# ignore my local version of config.local.template
+config.local
