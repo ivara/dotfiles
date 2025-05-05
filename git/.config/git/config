@@ -24,6 +24,8 @@
 [status]
   showBranch = true
   showStash = true
+[commit]
+  template = ~/.config/git/template
 [diff]
   colorMoved = default
   guitool = vscode
