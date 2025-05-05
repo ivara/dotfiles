@@ -6,8 +6,10 @@
 --
 
 vim.g.snacks_animate = false
-vim.g.lazyvim_picker = "telescope"
+-- vim.g.lazyvim_picker = "telescope"
 
 -- if the completion engine supports the AI source,
 -- use that instead of inline suggestions
 vim.g.ai_cmp = false
+
+vim.opt.cursorline = true

@@ -1,3 +1,4 @@
+# Shows nice filename in upper right corner
 return {
 	'b0o/incline.nvim',
 	dependencies = {

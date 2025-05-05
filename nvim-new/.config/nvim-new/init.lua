@@ -53,15 +53,14 @@ vim.keymap.set('i', 'jk', '<Esc>', { noremap = true, silent = true })
 -- vim.keymap.set('n', '<M-k>', ":m .-2<CR>==")
 
 vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
-  callback = function()
-	vim.highlight.on_yank()
-  end,
+	desc = 'Highlight when yanking (copying) text',
+	group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
 
 
 
 -- Load Lazy plugin manage
 require("config.lazy")
-
