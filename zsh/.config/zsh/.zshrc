@@ -16,14 +16,20 @@
 # - if it releases a resource acquired at login: .zlogout
 # ---------------------------------------------
 
+# autoload -Uz compinit && compinit
+#
+# # Use a completion menu.
+zstyle ':completion:*' menu select
+
+#
 # Load completion system
 autoload -Uz compinit
 compinit
 
 # History settings
 HISTFILE="$XDG_STATE_HOME/zsh/history"
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=10000 # How many commands zsh will load to memory
+SAVEHIST=10000 # How many commands history will save on file
 
 
 # zsh options
@@ -32,39 +38,43 @@ setopt no_beep       # disable terminal bell
 # When deleting with <C-w>, delete file names at a time.
 WORDCHARS=${WORDCHARS/\/}
 
-# Delete duplicates first when HISTFILE size exceeds HISTSIZE.
-setopt hist_expire_dups_first
 
-# Share history between windows.
-setopt SHARE_HISTORY
+# Dela history mellan shell-sessioner direkt
+setopt INC_APPEND_HISTORY      # Skriv varje kommando till $HISTFILE direkt
 
-# Ignore duplicated commands history list.
-setopt hist_ignore_dups
+# Valfritt, men rekommenderas
+# HISTORY
+setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
+setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
+setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt SHARE_HISTORY             # Share history between all sessions.
+# END HISTORY
 
-# Plugins (example with zinit)
-# source "${XDG_DATA_HOME}/zinit/zinit.git/zinit.zsh"
-# zinit light zsh-users/zsh-autosuggestions
-# zinit light zsh-users/zsh-syntax-highlighting
+
+# FZF + history search
+__fzf_history_widget() {
+  local selected
+  selected=$(fc -l 1 | sort -r | sed 's/^[[:space:]]*[0-9]\+[[:space:]]*//' | fzf --tac +s --no-sort --query="$LBUFFER" --height 40% --reverse --prompt="History> ")
+  if [[ -n $selected ]]; then
+    LBUFFER=$selected
+  fi
+}
+zle -N fzf-history-widget __fzf_history_widget
+bindkey '^R' fzf-history-widget  # Ctrl+R to trigger
 
 
-# Uncomment this (and last line in file) to profile load times in config
-# zmodload zsh/zprof
-
-# ------------------------------
-# Homebrew Configuration
-# ------------------------------
-# if [[ "$(uname)" == "Darwin" ]]; then
-#   # macOS
-#   if [[ -d "/opt/homebrew" ]]; then
-#     eval "$(/opt/homebrew/bin/brew shellenv)"  # Apple Silicon
-#   elif [[ -d "/usr/local" ]]; then
-#     eval "$(/usr/local/bin/brew shellenv)"  # Intel Mac
-#   fi
-# elif [[ "$(uname -r)" == *"Microsoft"* ]]; then
-#   # WSL
-#   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-# fi
-
+# Zinit (plugin manager)
+source /opt/homebrew/opt/zinit/zinit.zsh
+#  load Plugins
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+# add more common Plugins
+#zinit light zsh-users/zsh-history-substring-search
 
 # ------------------------------
 # Aliases
@@ -83,10 +93,10 @@ alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 alias gdu='gdu-go'
 
 # git stuff
-alias gd="git diff"
-alias gs="git status --short"
-alias gl="git lg"
-alias gl='git log --graph --all --pretty=format:"%C(magenta)%h %C(white) %an  %ar%C(blue)  %D%n%s%n"'
+# alias gd="git diff"
+# alias gs="git status --short"
+# alias gl="git lg"
+# alias gl='git log --graph --all --pretty=format:"%C(magenta)%h %C(white) %an  %ar%C(blue)  %D%n%s%n"'
 
 # ------------------------------
 # Functions
@@ -141,62 +151,6 @@ cd() {
   check_directory_for_new_repository
 }
 
-# help() {
-#   "$@" --help 2>&1 | bathelp
-# }
-#
-# batdiff() {
-#   git diff --name-only --relative --diff-filter=d | xargs bat --diff
-# }
-#
-
-# ------------------------------
-# Environment Variables
-# ------------------------------
-# export PAGER=less
-# export BAT_PAGER="less"
-# export BAT_THEME="Catppuccin Frappe"
-
-# TODO: move or setup separate config files
-# export BAT_THEME="Visual Studio Dark+"
-# export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
-# export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top --info=inline'
-# # get list of files and directories
-# export FZF_CTRL_T_OPTS="
-#   --walker-skip .git,node_modules,target
-#   --preview 'bat -n --color=always {}'
-#   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
-# # get list of only directories
-# export FZF_ALT_C_OPTS="
-#   --walker-skip .git,node_modules,target
-#   --preview 'eza --icons --tree --level=2 {}'"
-#
-
-# Load NVM
-# if [[ "$(uname)" == "Darwin" ]]; then
-#   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-#   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-# elif [[ "$(uname -r)" == *"Microsoft"* ]]; then
-#   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-#   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-# fi
-
-#
-# Docker CLI completions
-# fpath=(/Users/ivar/.docker/completions $fpath)
-
-# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-#export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm, without auto-using the default version
-
-# autoload -Uz compinit && compinit
-#
-# # Use a completion menu.
-zstyle ':completion:*' menu select
-#
-
 # Zoxide
 eval "$(zoxide init zsh)"
 
@@ -209,3 +163,4 @@ source <(fzf --zsh)
 # uncomment this (and first line in this file) to profile what takes time to load in config
 # zprof
 
+zinit light zsh-users/zsh-syntax-highlighting # must come last
