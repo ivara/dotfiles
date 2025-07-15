@@ -9,8 +9,11 @@
 # Re-read this file by running: exec zsh --login
 
 # Homebrew variables.
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
+if [[ "$(uname -s)" == "Linux" && -d  /home/linuxbrew/.linuxbrew ]]; then
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif [[ "$(uname -s)" == "Darwin" && -D /opt/homebrew ]]; then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Fast Node Manager (fnm) setup
 if command -v fnm > /dev/null; then
