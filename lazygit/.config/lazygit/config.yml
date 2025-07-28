@@ -66,6 +66,7 @@ gui:
 #     '*': '#b4befe'
 
 git:
+  autoForwardBranches: none
   paging:
     colorArg: always
     # useConfig: false
