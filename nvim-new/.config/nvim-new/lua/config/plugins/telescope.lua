@@ -38,6 +38,7 @@ return {
 		pickers = {
 		  find_files = {
 			-- theme = "ivy"
+			hidden = true
 		  },
 		  colorscheme = {
 			enable_preview = true
