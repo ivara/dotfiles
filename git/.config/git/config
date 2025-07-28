@@ -7,7 +7,7 @@
   alias = !git config -l | grep alias
   up = fetch --all --prune
   undo = reset --soft HEAD^
-  s = status
+  s = status --short --branch
   co = checkout
   lg = log --graph --decorate --pretty=format:'%C(yellow)%h%C(reset)%C(red)%d%C(reset) %s %C(green)%cr %C(dim white)%an%C(reset)'
   b = !git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'
@@ -24,6 +24,7 @@
 [status]
   showBranch = true
   showStash = true
+  verbose = true
 [commit]
   template = ~/.config/git/template
 [diff]
@@ -83,5 +84,5 @@
 [credential "https://dev.azure.com"]
   useHttpPath = true
 [user]
-	name = Ivar Åsell
+	name = Ivar Åsell
 	email = ivar.asell@activesolution.se
