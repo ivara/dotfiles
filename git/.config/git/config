@@ -79,8 +79,10 @@
   path = C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe
   cmd = \"C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe\" --new-window --wait --diff \"$LOCAL\" \"$REMOTE\"
 [credential]
-  helper = 
-  helper = /usr/local/share/gcm-core/git-credential-manager
+	# This is for WSL
+	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
+	# This is for macOS/linux ?
+	#helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
   useHttpPath = true
 [user]
