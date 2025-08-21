@@ -11,7 +11,7 @@
 # Homebrew variables.
 if [[ "$(uname -s)" == "Linux" && -d  /home/linuxbrew/.linuxbrew ]]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-elif [[ "$(uname -s)" == "Darwin" && -D /opt/homebrew ]]; then
+elif [[ "$(uname -s)" == "Darwin" && -d /opt/homebrew ]]; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
