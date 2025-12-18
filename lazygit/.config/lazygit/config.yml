@@ -9,11 +9,9 @@ gui:
   showNumstatInFilesView: true
   # commitAuthorShortLength: 4
   showBranchCommitHash: true
-
   shortTimeFormat: 15:04
   # timeFormat: 02/01-06 # 2006-01-02
   timeFormat: 02 Jan 2006 # 2006-01-02
-
   # expandFocusedSidePanel: true
   theme:
     activeBorderColor:
@@ -35,10 +33,8 @@ gui:
       - "#cdd6f4"
     searchingActiveBorderColor:
       - "#f9e2af"
-
   authorColors:
     "*": "#b4befe"
-
 # mocha/flamingo
 # gui:
 #   theme:
@@ -64,14 +60,13 @@ gui:
 #
 #   authorColors:
 #     '*': '#b4befe'
-
 git:
   autoForwardBranches: none
-  paging:
-    colorArg: always
-    # useConfig: false
-    pager: delta --dark --paging=never --diff-so-fancy
-    # Command used when displaying the current branch git log in the main window
+  pagers:
+    - colorArg: always
+      # useConfig: false
+      pager: delta --dark --paging=never --diff-so-fancy
+      # Command used when displaying the current branch git log in the main window
   #branchLogCmd:
   #  git log --graph --oneline --color=always --abbrev-commit --decorate --date=relative --first-parent {{branchName}} --
   #branchLogCmd: git log --graph --decorate --pretty=format:'%C(yellow)%h%C(reset)%C(red)%d%C(reset) %s %C(green)%cr %C(dim white)%an%C(reset)' --first-parent {{branchName}} --
