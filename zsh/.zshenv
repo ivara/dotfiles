@@ -55,6 +55,7 @@ export FZF_DEFAULT_OPTS="--color=fg:#f8f8f2,bg:#0e1419,hl:#e11299,fg+:#f8f8f2,bg
 # opt out of azure functions core tools telemetry
 export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT=1
 export AZURE_MCP_COLLECT_TELEMETRY=0
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 . "$HOME/.cargo/env"
 
 export CONTEXT7_API_KEY="ctx7sk-46a395ba-27e2-46b7-a0cd-ffd0635e5dcf"
