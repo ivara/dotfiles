@@ -50,6 +50,7 @@
 [core]
   pager = delta
   excludesfile = /Users/ivar/.gitignore_global
+	autocrlf = input
 [interactive]
   diffFilter = delta --color-only
 [include]
@@ -80,9 +81,9 @@
   cmd = \"C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe\" --new-window --wait --diff \"$LOCAL\" \"$REMOTE\"
 [credential]
 	# This is for WSL
-	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
+  #helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
 	# This is for macOS/linux ?
-	#helper = /usr/local/share/gcm-core/git-credential-manager
+	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
   useHttpPath = true
 [user]
