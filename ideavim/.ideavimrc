@@ -86,6 +86,13 @@ nmap gr <action>(FindUsages)
 
 map <S-Space> <Action>(GotoNextError)
 
+" You're missing common git shortcuts
+nnoremap <leader>gs :action Vcs.Show.Log<CR>
+nnoremap <leader>gb :action Git.Branches<CR>
+
+" Terminal toggle
+nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
+
 " Navigating tabs
 nmap <s-l> <Action>(NextTab)
 nmap <s-h> <Action>(PreviousTab)
@@ -100,6 +107,8 @@ nmap <leader>uL :set relativenumber!<CR>
 "nmap <leader>ff <action>(
 "nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
 "nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
+nmap ]e <Action>(GotoNextError)
+nmap [e <Action>(GotoPreviousError)
 
 " remove highlight search when pressing esc
 noremap <ESC> <ESC>:noh<CR>
@@ -117,9 +126,6 @@ map za <action>(ExpandCollapseToggleAction)
 map <leader>cc <action>(Refactorings.QuickListPopupAction)
 map <leader>cr <action>(RenameElement)
 map <leader>cf <Action>(ReformatCode)
-
-"map <leader>gg <Action>(Git)
-"map <leader>gc <Action>(ActivateCommitToolWindow)
 
 nmap <C-i> <Action>(Forward)| " https://youtrack.jetbrains.com/issue/VIM-44
 nmap <C-o> <Action>(Back)| " https://youtrack.jetbrains.com/issue/VIM-44 `nmap <C-o> :action Back<CR>|` doesn't work for some reason
