@@ -151,11 +151,28 @@ cd() {
   check_directory_for_new_repository
 }
 
+# Fuzzy find and kill listening processes
+k() {
+  local pid
+  pid=$(lsof -i -P -n -u $(whoami) 2>/dev/null | grep LISTEN | \
+    fzf --height=70% --reverse --header="Select process to kill (ESC to cancel)" \
+        --preview='echo "Process details:"; ps -p $(echo {} | awk "{print \$2}") -o pid,ppid,user,%cpu,%mem,start,command' \
+        --preview-window=down:4:wrap | \
+    awk '{print $2}')
+  
+  if [[ -n "$pid" ]]; then
+    echo "Killing PID $pid..."
+    kill "$pid" && echo "Done." || echo "Failed. Try: kill -9 $pid"
+  fi
+}
+
 # Zoxide
 eval "$(zoxide init zsh)"
 
 # Starship.rs
 eval "$(starship init zsh)"
+
+eval "$(direnv hook zsh)"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
