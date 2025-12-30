@@ -18,7 +18,7 @@ return {
         { '<leader>c', group = 'code' },
         { '<leader>d', group = 'diagnostics' },
         { '<leader>u', group = 'ui/toggle' },
-        { '<leader>x', group = 'trouble/quickfix' },
+        { '<leader>x', group = 'quickfix' },
       },
     },
     keys = {

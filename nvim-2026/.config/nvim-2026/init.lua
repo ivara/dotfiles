@@ -115,47 +115,32 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
     end
 
-    -- Go to definitions (some are built-in defaults in 0.12, but explicit is clearer)
-    map('n', 'gd', vim.lsp.buf.definition, 'Go to definition')
-    map('n', 'gD', vim.lsp.buf.declaration, 'Go to declaration')
-    map('n', 'gr', vim.lsp.buf.references, 'References')
-    map('n', 'gI', vim.lsp.buf.implementation, 'Implementation')
-    -- grt is already default in 0.12 for type_definition
+    -- 0.12 Default keymaps (for reference):
+    -- gd       → definition
+    -- gD       → declaration
+    -- grr      → references
+    -- gri      → implementation
+    -- grt      → type definition
+    -- gra      → code action
+    -- grn      → rename
+    -- K        → hover
+    -- [d / ]d  → diagnostic navigation
+    -- <C-s>    → signature help (insert mode)
 
-    -- Hover and signature
-    map('n', 'K', vim.lsp.buf.hover, 'Hover documentation')
-    map('i', '<C-k>', vim.lsp.buf.signature_help, 'Signature help')
-
-    -- Code actions (<leader>c)
-    map('n', '<leader>ca', vim.lsp.buf.code_action, 'Code action')
-    map('v', '<leader>ca', vim.lsp.buf.code_action, 'Code action')
-    map('n', '<leader>cr', vim.lsp.buf.rename, 'Rename')
+    -- Additional keymaps (beyond defaults)
     map('n', '<leader>cf', function()
       vim.lsp.buf.format({ async = true })
     end, 'Format')
-    map('n', '<leader>cl', '<cmd>lsp<cr>', 'LSP info (0.12)')
+    map('n', '<leader>cl', '<cmd>Lsp<cr>', 'LSP info')
 
     -- Diagnostics (<leader>d)
     map('n', '<leader>dd', vim.diagnostic.open_float, 'Line diagnostics')
     map('n', '<leader>dq', vim.diagnostic.setqflist, 'Quickfix list')
     map('n', '<leader>dl', vim.diagnostic.setloclist, 'Location list')
-    map('n', ']d', function()
-      vim.diagnostic.jump({ count = 1 })
-    end, 'Next diagnostic')
-    map('n', '[d', function()
-      vim.diagnostic.jump({ count = -1 })
-    end, 'Previous diagnostic')
 
     -- Enable inlay hints if supported
     if client and client:supports_method('textDocument/inlayHint') then
       vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    end
-
-    -- Enable inline completion for all servers (0.12 experimental)
-    if client and client:supports_method('textDocument/inlineCompletion') then
-      vim.lsp.completion.enable(true, client.id, bufnr, {
-        autotrigger = true,
-      })
     end
   end,
 })
@@ -221,6 +206,26 @@ vim.api.nvim_create_autocmd('BufReadPost', {
     local lcount = vim.api.nvim_buf_line_count(0)
     if mark[1] > 0 and mark[1] <= lcount then
       pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
+})
+
+-- Enable treesitter highlighting (Neovim 0.11+ native API)
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('treesitter-start', { clear = true }),
+  callback = function()
+    -- Skip large files
+    local max_filesize = 100 * 1024 -- 100 KB
+    local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(0))
+    if ok and stats and stats.size > max_filesize then
+      return
+    end
+    -- Start treesitter if parser is available
+    if pcall(vim.treesitter.start) then
+      -- Enable treesitter-based folds
+      vim.wo[0][0].foldmethod = 'expr'
+      vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      vim.wo[0][0].foldenable = false -- Don't fold by default
     end
   end,
 })
