@@ -1,0 +1,76 @@
+-- Gitsigns: Git integration
+-- https://github.com/lewis6991/gitsigns.nvim
+return {
+  {
+    'lewis6991/gitsigns.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    opts = {
+      current_line_blame = true,
+      current_line_blame_opts = {
+        delay = 500,
+      },
+      signs = {
+        add = { text = '│' },
+        change = { text = '│' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+        untracked = { text = '┆' },
+      },
+      on_attach = function(bufnr)
+        local gs = require('gitsigns')
+
+        local function map(mode, l, r, opts)
+          opts = opts or {}
+          opts.buffer = bufnr
+          vim.keymap.set(mode, l, r, opts)
+        end
+
+        -- Navigation
+        map('n', ']h', function()
+          if vim.wo.diff then
+            vim.cmd.normal({ ']c', bang = true })
+          else
+            gs.nav_hunk('next')
+          end
+        end, { desc = 'Next hunk' })
+
+        map('n', '[h', function()
+          if vim.wo.diff then
+            vim.cmd.normal({ '[c', bang = true })
+          else
+            gs.nav_hunk('prev')
+          end
+        end, { desc = 'Previous hunk' })
+
+        -- Actions (under <leader>g for git)
+        map('n', '<leader>ghs', gs.stage_hunk, { desc = 'Stage hunk' })
+        map('n', '<leader>ghr', gs.reset_hunk, { desc = 'Reset hunk' })
+        map('v', '<leader>ghs', function()
+          gs.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+        end, { desc = 'Stage hunk' })
+        map('v', '<leader>ghr', function()
+          gs.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+        end, { desc = 'Reset hunk' })
+        map('n', '<leader>ghS', gs.stage_buffer, { desc = 'Stage buffer' })
+        map('n', '<leader>ghu', gs.undo_stage_hunk, { desc = 'Undo stage hunk' })
+        map('n', '<leader>ghR', gs.reset_buffer, { desc = 'Reset buffer' })
+        map('n', '<leader>ghp', gs.preview_hunk, { desc = 'Preview hunk' })
+        map('n', '<leader>ghB', function()
+          gs.blame_line({ full = true })
+        end, { desc = 'Blame line (full)' })
+        map('n', '<leader>ghd', gs.diffthis, { desc = 'Diff this' })
+        map('n', '<leader>ghD', function()
+          gs.diffthis('~')
+        end, { desc = 'Diff this ~' })
+
+        -- Toggles
+        map('n', '<leader>gtb', gs.toggle_current_line_blame, { desc = 'Toggle line blame' })
+        map('n', '<leader>gtd', gs.toggle_deleted, { desc = 'Toggle deleted' })
+
+        -- Text object
+        map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'Select hunk' })
+      end,
+    },
+  },
+}
