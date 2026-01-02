@@ -13,28 +13,102 @@ gui:
   # timeFormat: 02/01-06 # 2006-01-02
   timeFormat: 02 Jan 2006 # 2006-01-02
   # expandFocusedSidePanel: true
+
+  # Kanagawa
   theme:
     activeBorderColor:
-      - "#fab387"
+      - "#DCA561" # autumn yellow
       - bold
     inactiveBorderColor:
-      - "#a6adc8"
+      - "#54546D" # sumiInk4
     optionsTextColor:
-      - "#89b4fa"
+      - "#7E9CD8" # crystalBlue
     selectedLineBgColor:
-      - "#313244"
+      - "#2D4F67" # waveBlue2
     cherryPickedCommitBgColor:
-      - "#45475a"
+      - "#363646" # sumiInk3
     cherryPickedCommitFgColor:
-      - "#fab387"
+      - "#957FB8" # oniViolet
     unstagedChangesColor:
-      - "#f38ba8"
+      - "#C34043" # autumnRed
     defaultFgColor:
-      - "#cdd6f4"
+      - "#DCD7BA" # fujiWhite
     searchingActiveBorderColor:
-      - "#f9e2af"
-  authorColors:
-    "*": "#b4befe"
+      - "#E6C384" # carpYellow
+
+  # Tokyonight moon
+  # theme:
+  #   activeBorderColor:
+  #     - "#ff966c"
+  #     - "bold"
+  #   inactiveBorderColor:
+  #     - "#589ed7"
+  #   searchingActiveBorderColor:
+  #     - "#ff966c"
+  #     - "bold"
+  #   optionsTextColor:
+  #     - "#82aaff"
+  #   selectedLineBgColor:
+  #     - "#2d3f76"
+  #   cherryPickedCommitFgColor:
+  #     - "#82aaff"
+  #   cherryPickedCommitBgColor:
+  #     - "#c099ff"
+  #   markedBaseCommitFgColor:
+  #     - "#82aaff"
+  #   markedBaseCommitBgColor:
+  #     - "#ffc777"
+  #   unstagedChangesColor:
+  #     - "#c53b53"
+  #   defaultFgColor:
+  #     - "#c8d3f5"
+  # Terminal/Neovim inherited colors
+  # theme:
+  #   activeBorderColor:
+  #     - green
+  #     - bold
+  #   inactiveBorderColor:
+  #     - default
+  #   optionsTextColor:
+  #     - blue
+  #   selectedLineBgColor:
+  #     - reverse
+  #   cherryPickedCommitBgColor:
+  #     - cyan
+  #   cherryPickedCommitFgColor:
+  #     - blue
+  #   unstagedChangesColor:
+  #     - red
+  #   defaultFgColor:
+  #     - default
+  #   searchingActiveBorderColor:
+  #     - yellow
+  # authorColors:
+  #   "*": magenta
+  #
+  # Catppuccin Mocha
+  # theme:
+  #   activeBorderColor:
+  #     - "#fab387"
+  #     - bold
+  #   inactiveBorderColor:
+  #     - "#a6adc8"
+  #   optionsTextColor:
+  #     - "#89b4fa"
+  #   selectedLineBgColor:
+  #     - "#313244"
+  #   cherryPickedCommitBgColor:
+  #     - "#45475a"
+  #   cherryPickedCommitFgColor:
+  #     - "#fab387"
+  #   unstagedChangesColor:
+  #     - "#f38ba8"
+  #   defaultFgColor:
+  #     - "#cdd6f4"
+  #   searchingActiveBorderColor:
+  #     - "#f9e2af"
+  # authorColors:
+  #   "*": "#b4befe"
   # mocha/flamingo
   # gui:
   #   theme:
