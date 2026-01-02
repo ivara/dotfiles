@@ -11,6 +11,7 @@ return {
     config = function()
       -- Icons: icon provider for other mini modules
       require('mini.icons').setup()
+      MiniIcons.tweak_lsp_kind() -- Show icons in completion menu instead of text
 
       -- Statusline: minimal and fast statusline
       require('mini.statusline').setup({
@@ -31,6 +32,20 @@ return {
 
       -- Pairs: auto-close brackets, quotes, etc.
       require('mini.pairs').setup()
+
+      -- Snippets: lightweight snippet support
+      require('mini.snippets').setup()
+      MiniSnippets.start_lsp_server() -- Show snippets in completion menu
+
+      -- Completion: lightweight LSP completion with auto-popup
+      require('mini.completion').setup({
+        -- Delay before showing completion (ms)
+        delay = { completion = 100, info = 100, signature = 50 },
+        window = {
+          info = { border = 'rounded' },
+          signature = { border = 'rounded' },
+        },
+      })
 
       -- Files: file explorer with Miller columns
       require('mini.files').setup({
