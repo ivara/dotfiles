@@ -157,6 +157,10 @@ vim.keymap.set("n", "<leader>uh", function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, { desc = "Toggle inlay hints" })
 
+vim.keymap.set("n", "<leader>ul", function()
+	vim.opt.list = not vim.opt.list:get()
+end, { desc = "Toggle invisible chars" })
+
 -- Undotree (built-in in 0.12!)
 vim.keymap.set("n", "<leader>uu", "<cmd>Undotree<cr>", { desc = "Undo tree" })
 
