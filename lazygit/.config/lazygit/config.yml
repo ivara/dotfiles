@@ -144,3 +144,6 @@ git:
     - git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium --oneline
   log:
     showWholeGraph: true
+os:
+  edit: "NVIM_APPNAME=nvim-2026 nvim {{filename}}"
+  editAtLine: "NVIM_APPNAME=nvim-2026 nvim +{{line}} {{filename}}"
