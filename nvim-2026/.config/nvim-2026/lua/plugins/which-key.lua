@@ -18,6 +18,7 @@ return {
         { '<leader>c', group = 'code' },
         { '<leader>d', group = 'diagnostics' },
         { '<leader>u', group = 'ui/toggle' },
+        { '<leader>ud', group = 'diagnostics' },
         { '<leader>x', group = 'quickfix' },
       },
     },
