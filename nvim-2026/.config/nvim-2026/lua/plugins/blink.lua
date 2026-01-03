@@ -9,7 +9,11 @@ return {
       'rafamadriz/friendly-snippets', -- Optional: community snippets
     },
     opts = {
-      keymap = { preset = 'super-tab' },
+      keymap = {
+        preset = 'super-tab',
+        ['<C-y>'] = { 'select_and_accept', 'fallback' },
+        ['<CR>'] = { 'accept', 'fallback' },
+      },
       appearance = {
         use_nvim_cmp_as_default = false,
         nerd_font_variant = 'mono',
