@@ -138,10 +138,7 @@ gui:
 git:
   autoForwardBranches: none
   pagers:
-    - colorArg: always
-      # useConfig: false
-      pager: delta --dark --paging=never
-      # pager: delta --dark --paging=never --diff-so-fancy
+    - pager: delta --dark --paging=never
   branchLogCmd: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --
   allBranchesLogCmds:
     - git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium --oneline

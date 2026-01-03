@@ -1,4 +1,11 @@
 [alias]
+  # Side-by-side diff toggles (s=side-by-side, n=normal)
+  diffs = -c delta.side-by-side=true diff
+  diffn = -c delta.side-by-side=false diff
+  shows = -c delta.side-by-side=true show
+  shown = -c delta.side-by-side=false show
+  logs = -c delta.side-by-side=true log -p
+  logn = -c delta.side-by-side=false log -p
   fa = fetch --all
   l2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
   l = log --graph --oneline --decorate --all
@@ -56,22 +63,15 @@
 [include]
   path = /Users/ivar/.config/catppuccin.gitconfig
 [delta]
-  ;features = catppuccin-frappe
-  ;theme = Catppuccin Macchiato
-  ;features = collared-trogon
+  features = catppuccin-frappe
   navigate = true
   dark = true
   line-numbers = true
-  diff-so-fancy = true
-  ; diff-highlight = true
-  ;commit-decoration-style = ol
-  ;file-decoration-style = "#606018" underline
-  ;hunk-header-decoration-style = "#022b45" box ul
-  ;light = true
-  ;theme=github
-  ;side-by-side = true
-  ;theme = gruvbox-dark
-  ;pager = bat
+  side-by-side = true
+  word-diff = true
+  hunk-header-style = file line-number syntax
+[delta "no-side-by-side"]
+  side-by-side = false
 [merge]
   conflictstyle = zdiff3
 [gc]
