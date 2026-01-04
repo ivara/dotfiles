@@ -33,7 +33,7 @@ return {
           "lua-language-server",
           "rust-analyzer",
           "typescript-language-server",
-          "pyright",
+          -- "pyright",
           "yaml-language-server",
           "json-lsp",
           "bicep-lsp",
@@ -44,8 +44,8 @@ return {
           "gofumpt",
           "prettier",
           "prettierd",
-          "black", -- formats Python code style
-          "isort", -- sorts/organizes Python imports
+          -- "black", -- formats Python code style
+          -- "isort", -- sorts/organizes Python imports
 
           -- Linters
           "golangci-lint",
