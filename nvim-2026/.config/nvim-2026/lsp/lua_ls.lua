@@ -1,33 +1,34 @@
 -- Lua Language Server
 -- https://luals.github.io/
+-- Note: lazydev.nvim handles workspace library and vim globals automatically
 return {
-  cmd = { 'lua-language-server' },
-  filetypes = { 'lua' },
+  cmd = { "lua-language-server" },
+  filetypes = { "lua" },
   root_markers = {
-    '.luarc.json',
-    '.luarc.jsonc',
-    '.luacheckrc',
-    '.stylua.toml',
-    'stylua.toml',
-    'selene.toml',
-    'selene.yml',
-    '.git',
+    ".luarc.json",
+    ".luarc.jsonc",
+    ".luacheckrc",
+    ".stylua.toml",
+    "stylua.toml",
+    "selene.toml",
+    "selene.yml",
+    ".git",
   },
   settings = {
     Lua = {
       runtime = {
-        version = 'LuaJIT',
+        version = "LuaJIT",
       },
       workspace = {
         checkThirdParty = false,
-        library = vim.api.nvim_get_runtime_file('', true),
+        -- library is managed by lazydev.nvim
       },
       diagnostics = {
-        globals = { 'vim' },
+        -- globals are managed by lazydev.nvim
       },
       hint = {
         enable = true,
-        arrayIndex = 'Disable',
+        arrayIndex = "Disable",
         setType = true,
       },
       telemetry = {
