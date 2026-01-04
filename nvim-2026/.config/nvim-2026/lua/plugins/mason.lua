@@ -43,6 +43,9 @@ return {
           "stylua",
           "gofumpt",
           "prettier",
+          "prettierd",
+          "black", -- formats Python code style
+          "isort", -- sorts/organizes Python imports
 
           -- Linters
           "golangci-lint",
