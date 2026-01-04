@@ -132,6 +132,7 @@ return {
           { mode = "n", keys = "<Leader>ud", desc = "🩺 diagnostics" },
           { mode = "n", keys = "<Leader>x", desc = "📋 quickfix" },
           { mode = "n", keys = "<Leader>h", desc = "📦 hunk/git" },
+          { mode = "x", keys = "<Leader>h", desc = "📦 hunk/git" },
           { mode = "n", keys = "<Leader>b", desc = "📄 buffer" },
           { mode = "n", keys = "<Leader>e", desc = "📂 explorer" },
           { mode = "n", keys = "<Leader>gt", desc = "🔀 toggle" },
