@@ -69,7 +69,7 @@ return {
 
       vim.keymap.set("n", "<leader>e", function()
         MiniFiles.open(vim.api.nvim_buf_get_name(0))
-      end, { desc = "Open file explorer" })
+      end, { desc = "📂 explorer" })
 
       -- Buffer navigation
       vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
@@ -124,16 +124,17 @@ return {
           miniclue.gen_clues.z(),
 
           -- Custom group descriptions
-          { mode = "n", keys = "<Leader>f", desc = "+find" },
-          { mode = "n", keys = "<Leader>g", desc = "+git" },
-          { mode = "n", keys = "<Leader>c", desc = "+code" },
-          { mode = "n", keys = "<Leader>d", desc = "+diagnostics" },
-          { mode = "n", keys = "<Leader>u", desc = "+ui/toggle" },
-          { mode = "n", keys = "<Leader>ud", desc = "+diagnostics" },
-          { mode = "n", keys = "<Leader>x", desc = "+quickfix" },
-          { mode = "n", keys = "<Leader>h", desc = "+hunk/git" },
-          { mode = "n", keys = "<Leader>t", desc = "+toggle" },
-          { mode = "n", keys = "<Leader>b", desc = "+buffer" },
+          { mode = "n", keys = "<Leader>f", desc = "🔍 find" },
+          { mode = "n", keys = "<Leader>g", desc = "🌿 git" },
+          { mode = "n", keys = "<Leader>c", desc = "💻 code" },
+          { mode = "n", keys = "<Leader>d", desc = "🩺 diagnostics" },
+          { mode = "n", keys = "<Leader>u", desc = "🎨 ui/toggle" },
+          { mode = "n", keys = "<Leader>ud", desc = "🩺 diagnostics" },
+          { mode = "n", keys = "<Leader>x", desc = "📋 quickfix" },
+          { mode = "n", keys = "<Leader>h", desc = "📦 hunk/git" },
+          { mode = "n", keys = "<Leader>b", desc = "📄 buffer" },
+          { mode = "n", keys = "<Leader>e", desc = "📂 explorer" },
+          { mode = "n", keys = "<Leader>gt", desc = "🔀 toggle" },
         },
 
         window = {
