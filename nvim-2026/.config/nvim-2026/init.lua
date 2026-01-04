@@ -44,7 +44,7 @@ vim.opt.signcolumn = "yes:1"
 vim.opt.cursorline = true
 vim.opt.showmode = false
 vim.opt.scrolloff = 5
-vim.opt.list = true
+vim.opt.list = false
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Search
@@ -186,10 +186,18 @@ _G.DiagnosticsToggle = {
   all = toggle_diagnostics,
   cycle_severity = cycle_severity,
   set_severity = set_severity,
-  errors_only = function() set_severity(vim.diagnostic.severity.ERROR) end,
-  warnings_plus = function() set_severity(vim.diagnostic.severity.WARN) end,
-  hints_plus = function() set_severity(vim.diagnostic.severity.HINT) end,
-  show_all = function() set_severity(nil) end,
+  errors_only = function()
+    set_severity(vim.diagnostic.severity.ERROR)
+  end,
+  warnings_plus = function()
+    set_severity(vim.diagnostic.severity.WARN)
+  end,
+  hints_plus = function()
+    set_severity(vim.diagnostic.severity.HINT)
+  end,
+  show_all = function()
+    set_severity(nil)
+  end,
 }
 
 --------------------------------------------------------------------------------
@@ -265,7 +273,9 @@ vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true })
 
 -- UI toggles (<leader>u)
 vim.keymap.set("n", "<leader>uh", function()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+  local bufnr = vim.api.nvim_get_current_buf()
+  local is_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+  vim.lsp.inlay_hint.enable(not is_enabled, { bufnr = bufnr })
 end, { desc = "Toggle inlay hints" })
 
 vim.keymap.set("n", "<leader>ul", function()
