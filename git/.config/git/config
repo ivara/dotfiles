@@ -67,7 +67,7 @@
   navigate = true
   dark = true
   line-numbers = true
-  side-by-side = true
+  side-by-side = false
   word-diff = true
   hunk-header-style = file line-number syntax
 [delta "no-side-by-side"]
