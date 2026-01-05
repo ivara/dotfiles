@@ -50,7 +50,7 @@ return {
       -- UI
       { "<leader>uc", "<cmd>FzfLua colorschemes<cr>", desc = "Colorschemes" },
       { "<leader>uk", "<cmd>FzfLua keymaps<cr>", desc = "Keymaps" },
-      { "<leader>uo", "<cmd>FzfLua vim_options<cr>", desc = "Vim options" },
+      { "<leader>uo", "<cmd>FzfLua nvim_options<cr>", desc = "Vim options" },
 
       -- Misc
       { "<leader>f:", "<cmd>FzfLua command_history<cr>", desc = "Command history" },
