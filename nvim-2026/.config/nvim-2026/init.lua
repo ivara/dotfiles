@@ -236,9 +236,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "<leader>cl", "<cmd>Lsp<cr>", "LSP info")
 
     -- Diagnostics (<leader>d)
-    map("n", "<leader>dd", vim.diagnostic.open_float, "Line diagnostics")
-    map("n", "<leader>dq", vim.diagnostic.setqflist, "Quickfix list")
-    map("n", "<leader>dl", vim.diagnostic.setloclist, "Location list")
+    map("n", "<leader>xd", vim.diagnostic.open_float, "Line diagnostics")
+    -- map("n", "<leader>dq", vim.diagnostic.setqflist, "Quickfix list")
+    -- map("n", "<leader>dl", vim.diagnostic.setloclist, "Location list")
 
     -- Enable inlay hints if supported
     if client and client:supports_method("textDocument/inlayHint") then
