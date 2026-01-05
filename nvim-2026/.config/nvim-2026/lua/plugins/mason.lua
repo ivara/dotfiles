@@ -44,11 +44,15 @@ return {
           "gofumpt",
           "prettier",
           "prettierd",
+          "csharpier",
           -- "black", -- formats Python code style
           -- "isort", -- sorts/organizes Python imports
 
           -- Linters
           "golangci-lint",
+
+          -- Debug adapters
+          "delve", -- Go debugger
         },
         auto_update = false,
         run_on_start = true,
