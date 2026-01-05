@@ -8,65 +8,43 @@ return {
   "nvim-treesitter/nvim-treesitter",
   lazy = false,
   build = ":TSUpdate",
+  config = function()
+    require("nvim-treesitter").install({
+      "bash",
+      "bicep",
+      "c_sharp",
+      "razor", -- razor pages
+      "css",
+      "scss",
+      "csv",
+      "dockerfile",
+      "editorconfig",
+      "git_config",
+      "git_rebase",
+      "gitattributes",
+      "gitcommit",
+      "gitignore",
+      "go",
+      "gomod",
+      "gosum",
+      "javascript",
+      "json",
+      "lua",
+      "luadoc",
+      "make",
+      "markdown_inline",
+      "markdown",
+      "passwd",
+      -- "python",
+      "rust",
+      "sql",
+      "svelte",
+      "tmux",
+      "toml",
+      "tsx", -- TypeScript and TSX grammars
+      "yaml",
+      "zig",
+      "zsh",
+    })
+  end,
 }
-
--- return {
---   {
---     "nvim-treesitter/nvim-treesitter",
---     lazy = false,
---
---     build = function()
---       -- Wrap in pcall to prevent build failures from breaking everything
---       local ok, err = pcall(function()
---         require("nvim-treesitter.install").update({ with_sync = true })()
---       end)
---       if not ok then
---         vim.notify("Treesitter build failed: " .. tostring(err), vim.log.levels.WARN)
---       end
---     end,
---     config = function()
---       -- STABILITY: Minimal parser list - only languages you actively use
---       local ensure_installed = {
---         "bash",
---         "c",
---         "c_sharp",
---         "go",
---         "javascript",
---         "json",
---         "lua",
---         "markdown",
---         "markdown_inline",
---         "python",
---         "rust",
---         "typescript",
---         "vim",
---         "vimdoc",
---         "yaml",
---       }
---
---       -- STABILITY: Prefer pre-built binaries over git compilation
---       local ok, ts_install = pcall(require, "nvim-treesitter.install")
---       if ok then
---         ts_install.prefer_git = false
---       end
---
---       -- Install missing parsers asynchronously (won't block startup)
---       vim.defer_fn(function()
---         local ok2, info = pcall(require, "nvim-treesitter.info")
---         if not ok2 then
---           return
---         end
---
---         local installed = info.installed_parsers()
---         local to_install = vim.tbl_filter(function(p)
---           return not vim.tbl_contains(installed, p)
---         end, ensure_installed)
---
---         if #to_install > 0 then
---           vim.notify("Installing treesitter parsers: " .. table.concat(to_install, ", "))
---           vim.cmd("TSInstall " .. table.concat(to_install, " "))
---         end
---       end, 100)
---     end,
---   },
--- }
