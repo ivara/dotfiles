@@ -1,17 +1,22 @@
 -- Roslyn LSP for C#/.NET
 -- https://github.com/seblyng/roslyn.nvim
+--
+-- - Roslyn is a special case because Microsoft's C# language server doesn't follow standard LSP conventions
+-- - The seblyng/roslyn.nvim plugin handles all the LSP setup internally
+-- - It starts Roslyn automatically when you open a .cs file (ft = { 'cs' })
+-- - It manages its own lifecycle - you don't need to add it to vim.lsp.enable()
 return {
   {
-    'seblyng/roslyn.nvim',
-    ft = { 'cs' },
+    "seblyng/roslyn.nvim",
+    ft = { "cs" },
     dependencies = {
-      'williamboman/mason.nvim',
+      "williamboman/mason.nvim",
     },
     opts = {
       -- Settings passed to the Roslyn server
       config = {
         settings = {
-          ['csharp|inlay_hints'] = {
+          ["csharp|inlay_hints"] = {
             csharp_enable_inlay_hints_for_implicit_object_creation = true,
             csharp_enable_inlay_hints_for_implicit_variable_types = true,
             csharp_enable_inlay_hints_for_lambda_parameter_types = true,
@@ -25,16 +30,16 @@ return {
             dotnet_suppress_inlay_hints_for_parameters_that_match_argument_name = true,
             dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent = true,
           },
-          ['csharp|code_lens'] = {
+          ["csharp|code_lens"] = {
             dotnet_enable_references_code_lens = true,
             dotnet_enable_tests_code_lens = true,
           },
-          ['csharp|completion'] = {
+          ["csharp|completion"] = {
             dotnet_provide_regex_completions = true,
             dotnet_show_completion_items_from_unimported_namespaces = true,
             dotnet_show_name_completion_suggestions = true,
           },
-          ['csharp|symbol_search'] = {
+          ["csharp|symbol_search"] = {
             dotnet_search_reference_assemblies = true,
           },
         },
