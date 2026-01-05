@@ -55,7 +55,7 @@ return {
       require("mini.cmdline").setup()
 
       -- Cursorword: highlight word under cursor
-      require("mini.cursorword").setup()
+      -- require("mini.cursorword").setup()
 
       -- Pairs: auto-close brackets, quotes, etc.
       require("mini.pairs").setup()
@@ -127,7 +127,7 @@ return {
           { mode = "n", keys = "<Leader>f", desc = "🔍 find" },
           { mode = "n", keys = "<Leader>g", desc = "🌿 git" },
           { mode = "n", keys = "<Leader>c", desc = "💻 code" },
-          { mode = "n", keys = "<Leader>d", desc = "🩺 diagnostics" },
+          { mode = "n", keys = "<Leader>d", desc = "🐛 debug" },
           { mode = "n", keys = "<Leader>u", desc = "🎨 ui/toggle" },
           { mode = "n", keys = "<Leader>ud", desc = "🩺 diagnostics" },
           { mode = "n", keys = "<Leader>x", desc = "📋 quickfix" },
