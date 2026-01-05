@@ -1,19 +1,4 @@
--- Neovim 0.12 Configuration
--- Using native LSP (no nvim-lspconfig required)
---
--- TROUBLESHOOTING:
--- If nvim crashes or has treesitter errors:
---   1. Delete parser cache:  rm -rf ~/.local/share/nvim-2026/lazy/nvim-treesitter/parser/
---   2. Restart nvim and run: :TSInstall all
---
--- If plugins misbehave after update:
---   1. Restore from lockfile: :Lazy restore
---   2. Or reset plugin:       rm -rf ~/.local/share/nvim-2026/lazy/<plugin-name>
---
--- To update plugins safely:
---   1. Run :Lazy update
---   2. Test everything works
---   3. Commit lazy-lock.json to save known-good versions
+-- Neovim 0.11.5 Configuration
 
 --------------------------------------------------------------------------------
 -- Leader keys (must be set before lazy.nvim)
@@ -40,12 +25,18 @@ vim.opt.relativenumber = true
 
 -- Display
 vim.opt.termguicolors = true
-vim.opt.signcolumn = "yes:1"
+vim.opt.signcolumn = "yes:2"
 vim.opt.cursorline = true
 vim.opt.showmode = false
 vim.opt.scrolloff = 5
 vim.opt.list = false
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+-- Folds
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99 -- Start with all folds open
+vim.opt.foldenable = true -- Enable folding
 
 -- Search
 vim.opt.ignorecase = true
@@ -201,15 +192,6 @@ _G.DiagnosticsToggle = {
 }
 
 --------------------------------------------------------------------------------
--- Filetype Detection
---------------------------------------------------------------------------------
-vim.filetype.add({
-  extension = {
-    bicep = "bicep",
-  },
-})
-
---------------------------------------------------------------------------------
 -- LSP Configuration (Native Neovim 0.11+)
 --------------------------------------------------------------------------------
 -- Enable LSP servers (configs are in lsp/ directory)
@@ -281,9 +263,6 @@ end, { desc = "Toggle inlay hints" })
 vim.keymap.set("n", "<leader>ul", function()
   vim.opt.list = not vim.opt.list:get()
 end, { desc = "Toggle invisible chars" })
-
--- Undotree (built-in in 0.12!)
-vim.keymap.set("n", "<leader>uu", "<cmd>Undotree<cr>", { desc = "Undo tree" })
 
 -- Diagnostics toggles (<leader>ud)
 vim.keymap.set("n", "<leader>udd", DiagnosticsToggle.all, { desc = "Toggle diagnostics" })
@@ -398,13 +377,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 
     -- Start treesitter highlighting
-    local start_ok = pcall(vim.treesitter.start, bufnr, lang)
-    if start_ok then
-      -- Enable treesitter-based folds
-      vim.wo[0][0].foldmethod = "expr"
-      vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-      vim.wo[0][0].foldenable = false -- Don't fold by default
-    end
+    pcall(vim.treesitter.start, bufnr, lang)
   end,
 })
 
