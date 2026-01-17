@@ -33,6 +33,7 @@ return {
           "lua-language-server",
           "rust-analyzer",
           "typescript-language-server",
+          "svelte-language-server",
           -- "pyright",
           "yaml-language-server",
           "json-lsp",
@@ -42,9 +43,10 @@ return {
           -- Formatters
           "stylua",
           "gofumpt",
+          "goimports",
           "prettier",
           "prettierd",
-          "csharpier",
+          "csharpier", -- formatter
           -- "black", -- formats Python code style
           -- "isort", -- sorts/organizes Python imports
 
@@ -53,6 +55,7 @@ return {
 
           -- Debug adapters
           "delve", -- Go debugger
+          "netcoredbg", -- C# DAP
         },
         auto_update = false,
         run_on_start = true,

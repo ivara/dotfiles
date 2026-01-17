@@ -225,6 +225,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "gri", vim.lsp.buf.implementation, "Go to implementation")
     map("n", "grt", vim.lsp.buf.type_definition, "Type definition")
     map("n", "gra", vim.lsp.buf.code_action, "Code action")
+    map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
     map("n", "grn", vim.lsp.buf.rename, "Rename")
     map("n", "K", vim.lsp.buf.hover, "Hover")
     map("i", "<C-s>", vim.lsp.buf.signature_help, "Signature help")
@@ -326,6 +327,18 @@ vim.api.nvim_create_autocmd("VimResized", {
   group = vim.api.nvim_create_augroup("resize-splits", { clear = true }),
   callback = function()
     vim.cmd("tabdo wincmd =")
+  end,
+})
+
+-- Go: Toggle between implementation and test file
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "go",
+  callback = function()
+    vim.keymap.set("n", "<leader>gt", function()
+      local file = vim.fn.expand("%:p")
+      local target = file:match("_test%.go$") and file:gsub("_test%.go$", ".go") or file:gsub("%.go$", "_test.go")
+      vim.cmd.edit(target)
+    end, { buffer = true, desc = "Toggle Go test file" })
   end,
 })
 
