@@ -1,4 +1,19 @@
 -- Neovim 0.11.5 Configuration
+--
+-- | API | Type | Use case |
+-- |-----|------|----------|
+-- | vim.o | Raw value (string/number/bool) | Simple assignment |
+-- | vim.opt | Special wrapper object | List/map manipulation |
+-- For simple string options like grepprg and grepformat, they're functionally identical:
+-- -- These are equivalent:
+--     vim.o.grepprg = "rg --vimgrep --smart-case"
+--     vim.opt.grepprg = "rg --vimgrep --smart-case"
+-- Where vim.opt shines is with list-like options:
+--   -- vim.opt allows appending/prepending/removing
+--     vim.opt.wildignore:append({ "*.pyc", "node_modules" })
+--     vim.opt.path:prepend({ "src/**" })
+-- -- vim.o would require string concatenation
+--     vim.o.wildignore = vim.o.wildignore .. ",*.pyc,node_modules"
 
 --------------------------------------------------------------------------------
 -- Leader keys (must be set before lazy.nvim)
@@ -43,6 +58,9 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.incsearch = true
 vim.opt.inccommand = "split"
+
+vim.opt.grepprg = "rg --vimgrep --smart-case"
+vim.opt.grepformat = "%f:%l:%c:%m"
 
 -- Splits
 vim.opt.splitright = true

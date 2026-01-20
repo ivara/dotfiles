@@ -16,6 +16,7 @@ return {
       { "<leader>fW", "<cmd>FzfLua grep_cWORD<cr>", desc = "Grep WORD under cursor" },
       { "<leader>f/", "<cmd>FzfLua grep_curbuf<cr>", desc = "Grep current buffer" },
       { "<leader>fq", "<cmd>FzfLua quickfix<cr>", desc = "Quickfix list" },
+      { "<leader>fQ", "<cmd>FzfLua quickfix_stack<cr>", desc = "Quickfix list (history)" },
       { "<C-p>", "<cmd>FzfLua files<cr>", desc = "Find files" },
 
       -- Find config/neovim files
