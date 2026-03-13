@@ -32,7 +32,8 @@ export MANPAGER='nvim +Man!'
 export PAGER=less
 
 # Set up neovim as the default editor.
-export EDITOR="NVIM_APPNAME=nvim-2026 nvim"
+export EDITOR="nvim"
+# export EDITOR="NVIM_APPNAME=nvim-2026 nvim"
 export VISUAL="$EDITOR"
 
 # Disable Apple's save/restore mechanism.
@@ -60,3 +61,5 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 
 export CONTEXT7_API_KEY="ctx7sk-46a395ba-27e2-46b7-a0cd-ffd0635e5dcf"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"

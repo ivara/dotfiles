@@ -3,6 +3,12 @@
 # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
 #
 gui:
+  branchColorPatterns:
+    "^feature": "#11aaff"
+    "^fix": "#ff5733"
+    "^hotfix": "#ff5733"
+    "main": "#ffaffa"
+    "^docs/": "#B6977E"
   showRandomTip: true
   nerdFontsVersion: "3"
   # showDivergenceFromBaseBranch: arrowAndNumber
@@ -139,9 +145,10 @@ git:
   autoForwardBranches: none
   pagers:
     - pager: delta --dark --paging=never
+    - pager: delta --dark --paging=never --side-by-side
   branchLogCmd: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --
   allBranchesLogCmds:
-    - git log --graph --oneline --color=always --pretty=format:'%C(yellow)%h%C(reset)%C(red)%d%C(reset) %s %C(green)%cr %C(dim white)%an%C(reset)'
+    - git log --all --graph --oneline --color=always --pretty=format:'%C(yellow)%h%C(reset)%C(red)%d%C(reset) %s %C(green)%cr %C(dim white)%an%C(reset)'
     # - git log --graph --decorate --pretty=format:'%C(yellow)%h%C(reset)%C(red)%d%C(reset) %s %C(green)%cr %C(dim white)%an%C(reset)'
     # - git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium --oneline
     # - git --graph --decorate --pretty=format:'%C(yellow)%h%C(reset)%C(red)%d%C(reset) %s %C(green)%cr %C(dim white)%an%C(reset)'

@@ -79,8 +79,9 @@ zinit light zsh-users/zsh-completions
 # ------------------------------
 # Aliases
 # ------------------------------
-alias vi="NVIM_APPNAME=nvim-2026 nvim"
-alias nvim="NVIM_APPNAME=nvim-2026 nvim"
+alias vi="nvim"
+# alias vi="NVIM_APPNAME=nvim-2026 nvim"
+# alias nvim="NVIM_APPNAME=nvim-2026 nvim"
 alias ls="eza --icons"
 alias la="eza --icons -a"
 alias ll="eza --icons -l"
