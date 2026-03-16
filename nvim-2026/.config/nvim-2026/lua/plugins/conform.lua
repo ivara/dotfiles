@@ -15,6 +15,7 @@ return {
       csharp = { "csharpier" },
       -- Go: goimports handles both formatting and import organization
       go = { "goimports", "gofumpt" },
+      yaml = { "yamlfmt" },
     },
     format_on_save = {
       -- These options will be passed to conform.format()
