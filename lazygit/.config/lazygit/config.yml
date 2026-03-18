@@ -4,12 +4,11 @@
 #
 gui:
   branchColorPatterns:
-    "^feature": "#11aaff"
-    "^fix": "#ff5733"
-    "^hotfix": "#ff5733"
+    "^feature": "#98BB6C" #"#11aaff"
+    "^fix": "#FF8C00"
+    "^hotfix": "#FF8C00"
     "main": "#ffaffa"
-    "^docs/": "#B6977E"
-  showRandomTip: true
+    "^docs/": "#957FB8" #  showRandomTip: true
   nerdFontsVersion: "3"
   # showDivergenceFromBaseBranch: arrowAndNumber
   showNumstatInFilesView: true
