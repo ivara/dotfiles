@@ -2,7 +2,7 @@
 return {
   -- Kanagawa
   {
-    'rebelot/kanagawa.nvim',
+    "rebelot/kanagawa.nvim",
     lazy = true,
     -- config = function()
     --   require('kanagawa').setup({
@@ -45,21 +45,25 @@ return {
   },
   -- Catppuccin (primary)
   {
-    'catppuccin/nvim',
-    name = 'catppuccin',
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+    priority = 100,
+    -- config = function()
+    --   vim.cmd.colorscheme('catppuccin')
+    -- end,
+  },
+  {
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme('catppuccin')
+      vim.cmd.colorscheme("tokyonight")
     end,
   },
   {
-    'folke/tokyonight.nvim',
-    lazy = true,
-  },
-  {
-    'rose-pine/neovim',
-    name = 'rose-pine',
+    "rose-pine/neovim",
+    name = "rose-pine",
     lazy = true,
   },
 }

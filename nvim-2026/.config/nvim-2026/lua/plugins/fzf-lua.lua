@@ -8,6 +8,7 @@ return {
     keys = {
       -- Find
       { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find files" },
+      { "<C-p>", "<cmd>FzfLua files<cr>", desc = "Find files" },
       { "<leader>fg", "<cmd>FzfLua live_grep<cr>", desc = "Live grep" },
       { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
       { "<leader>fh", "<cmd>FzfLua help_tags<cr>", desc = "Help" },
@@ -17,7 +18,6 @@ return {
       { "<leader>f/", "<cmd>FzfLua grep_curbuf<cr>", desc = "Grep current buffer" },
       { "<leader>fq", "<cmd>FzfLua quickfix<cr>", desc = "Quickfix list" },
       { "<leader>fQ", "<cmd>FzfLua quickfix_stack<cr>", desc = "Quickfix list (history)" },
-      { "<C-p>", "<cmd>FzfLua files<cr>", desc = "Find files" },
 
       -- Find config/neovim files
       {

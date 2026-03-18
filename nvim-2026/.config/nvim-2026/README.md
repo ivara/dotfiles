@@ -14,3 +14,11 @@
 
 ### Debugging
 - [ ] breakpoint icons in gutter
+
+
+## Common problems
+
+crash due to CODESIGNING
+- common after `:Lazy update`
+
+codesign --force --sign - ~/.local/share/nvim-2026/site/parser/*.so
