@@ -14,6 +14,7 @@
   "mason.nvim": { "branch": "main", "commit": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65" },
   "mini.nvim": { "branch": "main", "commit": "28d993854bdcde7d06f0990cfe6a2c6577f3f8ab" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
+  "nvim-lint": { "branch": "master", "commit": "606b823a57b027502a9ae00978ebf4f5d5158098" },
   "nvim-treesitter": { "branch": "main", "commit": "2b50ab5ccbcd9e5708deb351308edd738adbf84c" },
   "nvim-web-devicons": { "branch": "master", "commit": "d7462543c9e366c0d196c7f67a945eaaf5d99414" },
   "package-info.nvim": { "branch": "master", "commit": "52e407af634cd5d3add0dc916c517865850113a4" },
