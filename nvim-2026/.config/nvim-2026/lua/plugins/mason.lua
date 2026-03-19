@@ -33,8 +33,7 @@ return {
           "lua-language-server",
           "rust-analyzer",
           "typescript-language-server",
-          "svelte-language-server",
-          -- "pyright",
+          "pyright",
           "yaml-language-server",
           "json-lsp",
           "bicep-lsp",
@@ -48,6 +47,7 @@ return {
           "prettier",
           "prettierd",
           "csharpier", -- formatter
+          "yamlfmt",
           -- "black", -- formats Python code style
           -- "isort", -- sorts/organizes Python imports
 
