@@ -219,6 +219,7 @@ vim.lsp.enable({
   "gopls",
   "rust_analyzer",
   "ts_ls",
+  "eslint",
   "bicep",
   "pyright",
   "yamlls",
@@ -253,7 +254,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "<leader>cf", function()
       vim.lsp.buf.format({ async = true })
     end, "Format")
-    map("n", "<leader>cl", "<cmd>Lsp<cr>", "LSP info")
+    map("n", "<leader>ci", "<cmd>Lsp<cr>", "LSP info")
 
     -- Diagnostics (<leader>d)
     map("n", "<leader>xd", vim.diagnostic.open_float, "Line diagnostics")

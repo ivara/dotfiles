@@ -39,6 +39,7 @@ return {
           "json-lsp",
           "bicep-lsp",
           "roslyn",
+          "eslint-lsp",
 
           -- Formatters
           "stylua",

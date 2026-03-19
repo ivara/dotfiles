@@ -41,7 +41,8 @@ return {
       "svelte",
       "tmux",
       "toml",
-      "tsx", -- TypeScript and TSX grammars
+      "tsx", -- TSX grammar (separate from typescript)
+      "typescript", -- TypeScript grammar (required for .ts files)
       "yaml",
       "zig",
       "zsh",

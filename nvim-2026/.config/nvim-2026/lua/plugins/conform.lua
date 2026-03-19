@@ -16,6 +16,7 @@ return {
       -- Go: goimports handles both formatting and import organization
       go = { "goimports", "gofumpt" },
       yaml = { "yamlfmt" },
+      bicep = { lsp_format = "prefer" },
     },
     format_on_save = {
       -- These options will be passed to conform.format()
@@ -23,4 +24,20 @@ return {
       lsp_format = "fallback",
     },
   },
+  config = function(_, opts)
+    local conform = require("conform")
+    conform.setup(opts)
+
+    -- Run ESLint fix-all after prettier formats JS/TS files on save.
+    -- EslintFixAll is a command provided by the eslint LSP server.
+    vim.api.nvim_create_autocmd("BufWritePost", {
+      pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.mjs", "*.cjs" },
+      callback = function()
+        local clients = vim.lsp.get_clients({ bufnr = 0, name = "eslint" })
+        if #clients > 0 then
+          vim.cmd("EslintFixAll")
+        end
+      end,
+    })
+  end,
 }

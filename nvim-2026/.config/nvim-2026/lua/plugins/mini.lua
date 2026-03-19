@@ -141,6 +141,7 @@ return {
           { mode = "x", keys = "<Leader>h", desc = "📦 hunk/git" },
           { mode = "n", keys = "<Leader>b", desc = "📄 buffer" },
           { mode = "n", keys = "<Leader>e", desc = "📂 explorer" },
+          { mode = "n", keys = "<Leader>n", desc = "📦 npm/package" },
           { mode = "n", keys = "<Leader>gt", desc = "🔀 toggle" },
         },
 
