@@ -31,12 +31,15 @@ return {
             local recording = vim.fn.reg_recording()
             local macro = recording ~= "" and ("Recording @" .. recording) or ""
 
+            -- Add noeol warning
+            local noeol = (not vim.bo.endofline) and "[noeol]" or ""
+
             return MiniStatusline.combine_groups({
               { hl = mode_hl, strings = { mode } },
               { hl = "WarningMsg", strings = { macro } },
               { hl = "MiniStatuslineDevinfo", strings = { git, diff, diagnostics, lsp } },
               "%<", -- Mark general truncate point
-              { hl = "MiniStatuslineFilename", strings = { filename } },
+              { hl = "MiniStatuslineFilename", strings = { filename, noeol } },
               "%=", -- End left alignment
               { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
               { hl = mode_hl, strings = { search, location } },

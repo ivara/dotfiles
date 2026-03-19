@@ -1,5 +1,7 @@
 # README nvim config 2026
 
+
+
 ## TODO
 
 - [ ] Configure mini.files
@@ -13,6 +15,7 @@
 - [ ] move all git-related keybinds to <leader>g
 
 ### Debugging
+
 - [ ] breakpoint icons in gutter
 
 
@@ -22,3 +25,12 @@ crash due to CODESIGNING
 - common after `:Lazy update`
 
 codesign --force --sign - ~/.local/share/nvim-2026/site/parser/*.so
+
+
+## Learning corner
+
+- `:set something?` shows the current value for that setting (adding `?` at the end)
+
+### Lua
+
+`:lua print(vim.fn.getcwd())`
