@@ -4,13 +4,21 @@
 # like Ghostty, every new window/tab is a login + interactive shell,
 # so this file is always sourced.
 
+# ── OS helpers ────────────────────────────────────────────────────────
+is_mac()   { [[ "$OSTYPE" == darwin* ]]; }
+is_linux() { [[ "$OSTYPE" == linux*  ]]; }
+
 # ── Homebrew (static, no eval) ────────────────────────────────────────
-export HOMEBREW_PREFIX="/opt/homebrew"
-export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
-export HOMEBREW_REPOSITORY="/opt/homebrew"
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-export MANPATH="/opt/homebrew/share/man:${MANPATH:-}"
-export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
+if is_mac; then
+  export HOMEBREW_PREFIX="/opt/homebrew"
+else
+  export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+fi
+export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar"
+export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX"
+export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
+export MANPATH="$HOMEBREW_PREFIX/share/man:${MANPATH:-}"
+export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}"
 
 # ── XDG base directories ─────────────────────────────────────────────
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -25,7 +33,7 @@ path=(
   $HOME/.dotnet/tools                       # dotnet global tools
   /usr/local/share/dotnet                   # .NET SDK
   ${ASDF_DATA_DIR:-$HOME/.asdf}/shims       # asdf
-  /opt/homebrew/opt/postgresql@18/bin        # PostgreSQL
+  $HOMEBREW_PREFIX/opt/postgresql@18/bin     # PostgreSQL (mac: opt/homebrew, linux: linuxbrew)
   $path
 )
 typeset -U path   # deduplicate
@@ -39,7 +47,7 @@ export VISUAL="$EDITOR"
 export PAGER="less"
 export MANPAGER="nvim +Man!"
 
-export SHELL_SESSIONS_DISABLE=1              # disable macOS save/restore
+is_mac && export SHELL_SESSIONS_DISABLE=1   # disable macOS save/restore
 export GHOSTTY_SHELL_FEATURES="title,sudo"
 
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/.ripgreprc"
@@ -89,7 +97,7 @@ fi
 zstyle ':completion:*' menu select
 
 # ── Zinit + plugins ──────────────────────────────────────────────────
-source /opt/homebrew/opt/zinit/zinit.zsh
+source "$HOMEBREW_PREFIX/opt/zinit/zinit.zsh"
 zinit light zsh-users/zsh-completions
 zinit wait lucid for \
   zsh-users/zsh-autosuggestions \
