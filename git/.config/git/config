@@ -80,7 +80,7 @@
   path = C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe
   cmd = \"C:/Users/ivara/AppData/Local/Programs/Microsoft VS Code/Code.exe\" --new-window --wait --diff \"$LOCAL\" \"$REMOTE\"
 [credential]
-	helper =  # recommended by GCM docs
+	helper =
 	helper = git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
