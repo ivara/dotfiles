@@ -16,6 +16,7 @@ return {
       -- Go: goimports handles both formatting and import organization
       go = { "goimports", "gofumpt" },
       yaml = { "yamlfmt" },
+      markdown = { "prettierd", "prettier", stop_after_first = true },
       bicep = { lsp_format = "prefer" },
     },
     format_on_save = {
