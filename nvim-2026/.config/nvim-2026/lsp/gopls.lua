@@ -1,11 +1,12 @@
 -- Go Language Server
 -- https://pkg.go.dev/golang.org/x/tools/gopls
 return {
-  cmd = { 'gopls' },
-  filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
-  root_markers = { 'go.work', 'go.mod', '.git' },
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  root_markers = { "go.work", "go.mod", ".git" },
   settings = {
     gopls = {
+      buildFlags = { "-tags=integration" },
       analyses = {
         unusedparams = true,
         shadow = true,
