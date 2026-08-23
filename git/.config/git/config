@@ -78,9 +78,7 @@
   refLogExpire = 90.days
 [credential]
 	helper =
-	helper = /usr/local/bin/git-credential-manager
+	helper = git-credential-manager
 [user]
 	name = Ivar Åsell
-	email = ivar.asell@gmail.se
-[credential "https://example.com"]
-	provider = generic
+	email = ivar.asell@gmail.com
