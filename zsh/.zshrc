@@ -107,6 +107,7 @@ zinit wait lucid for \
 eval "$(fnm env --use-on-cd)"
 
 # ── Tool inits ────────────────────────────────────────────────────────
+unalias zi 2>/dev/null # zinit aliases zi; zoxide defines zi() on Linuxbrew/Ubuntu
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
